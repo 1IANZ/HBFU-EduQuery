@@ -52,7 +52,7 @@ cargo run
 
 ## 配置说明
 
-* **微信 AppID**：在 `apps/miniapp/manifest.json` 的 `mp-weixin.appid` 字段中填入，**请勿提交真实 AppID 到版本控制**。
+* **微信 AppID**：在 `apps/miniapp/manifest.json` 的 `mp-weixin.appid` 字段中填入。
 * **服务端配置**：`apps/server/data.json` 包含学期、开学日期等运营数据，可按需修改。
 
 ## 贡献
