@@ -2,7 +2,7 @@
 
 > 河北金融学院教务系统查询微信小程序
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 ## 简介
 
@@ -10,10 +10,10 @@ HBFU-EduQuery 是一款面向河北金融学院学生的微信小程序，通过
 
 ## 技术栈
 
-| 层级 | 技术 |
-|------|------|
+| 层级    | 技术                                               |
+| ----- | ------------------------------------------------ |
 | 小程序前端 | [uni-app](https://uniapp.dcloud.net.cn/) + Vue 3 |
-| 后端服务 | Rust + [Axum](https://github.com/tokio-rs/axum) |
+| 后端服务  | Rust + [Axum](https://github.com/tokio-rs/axum)  |
 
 ## 项目结构
 
@@ -33,6 +33,7 @@ HBFU-EduQuery/
 
 1. 安装 [HBuilderX](https://www.dcloud.io/hbuilderx.html)
 2. 在 `apps/miniapp/manifest.json` 中填入你的微信小程序 AppID：
+
    ```json
    "mp-weixin": {
      "appid": "YOUR_WECHAT_APPID"
@@ -51,8 +52,8 @@ cargo run
 
 ## 配置说明
 
-- **微信 AppID**：在 `apps/miniapp/manifest.json` 的 `mp-weixin.appid` 字段中填入，**请勿提交真实 AppID 到版本控制**。
-- **服务端配置**：`apps/server/data.json` 包含学期、开学日期等运营数据，可按需修改。
+* **微信 AppID**：在 `apps/miniapp/manifest.json` 的 `mp-weixin.appid` 字段中填入，**请勿提交真实 AppID 到版本控制**。
+* **服务端配置**：`apps/server/data.json` 包含学期、开学日期等运营数据，可按需修改。
 
 ## 贡献
 
@@ -60,4 +61,4 @@ cargo run
 
 ## 许可证
 
-本项目基于 [MIT License](LICENSE) 开源。
+本项目基于 [Apache License 2.0](LICENSE) 开源。
