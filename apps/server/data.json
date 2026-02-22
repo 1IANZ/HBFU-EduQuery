@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "message": "ok",
+  "data": {
+    "course": {
+      "semester": "2025-2026-2",
+      "startDate": "2026-03-02",
+      "examSemester": "2025-2026-1"
+    },
+    "notice": {
+      "messages": ["祝大家假期快乐!"]
+    }
+  }
+}
