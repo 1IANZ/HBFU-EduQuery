@@ -17,49 +17,61 @@ pub struct CourseSchedule {
     pub duration: String,      // 持续节次 "01-02节"
 }
 
-/// 解析周次字符串为数组，如 "4-17周" -> [4, 5, 6, ..., 17]
 fn parse_weeks(weeks_str: &str) -> Vec<i32> {
     if weeks_str.is_empty() {
         return vec![];
     }
 
-    // 移除"周"字和空格
-    let cleaned = weeks_str.replace("周", "").replace(" ", "");
-    if cleaned.is_empty() {
-        return vec![];
-    }
-
+    let input = weeks_str.replace(' ', "");
     let mut weeks = Vec::new();
 
-    // 按逗号分隔
-    for part in cleaned.split(',') {
+    for part in input.split(',') {
         let part = part.trim();
         if part.is_empty() {
             continue;
         }
 
-        // 检查是否是范围 (例如: "1-17")
-        if part.contains('-') {
-            let parts: Vec<&str> = part.splitn(2, '-').collect();
+         let odd_only = part.contains("单周");
+        let even_only = part.contains("双周");
+
+         let clean: String = part
+            .replace("(单周)", "")
+            .replace("（单周）", "")
+            .replace("单周", "")
+            .replace("(双周)", "")
+            .replace("（双周）", "")
+            .replace("双周", "")
+            .replace('周', "")
+            .replace(['(', ')', '（', '）'], "");
+        let clean = clean.trim();
+
+        if clean.is_empty() {
+            continue;
+        }
+
+        if clean.contains('-') {
+            let parts: Vec<&str> = clean.splitn(2, '-').collect();
             if parts.len() == 2 {
                 if let (Ok(start), Ok(end)) = (
                     parts[0].trim().parse::<i32>(),
                     parts[1].trim().parse::<i32>(),
                 ) {
                     for w in start..=end {
+                        if odd_only && w % 2 == 0 {
+                            continue;
+                        }
+                        if even_only && w % 2 != 0 {
+                            continue;
+                        }
                         weeks.push(w);
                     }
                 }
             }
-        } else {
-            // 单个周次
-            if let Ok(w) = part.parse::<i32>() {
-                weeks.push(w);
-            }
+        } else if let Ok(w) = clean.parse::<i32>() {
+            weeks.push(w);
         }
     }
 
-    // 去重并排序
     weeks.sort();
     weeks.dedup();
     weeks

@@ -1,5 +1,5 @@
 const BASE_URL = "https://hbfu.karpov.cn/api";
-// const BASE_URL = "http://127.0.0.1:8000/api";
+// const BASE_URL = "http://127.0.0.1:9866/api";
 const API = {
   auth: {
     login_jwxt: `${BASE_URL}/auth/login/jwxt`,
