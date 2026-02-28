@@ -31,10 +31,10 @@ fn parse_weeks(weeks_str: &str) -> Vec<i32> {
             continue;
         }
 
-         let odd_only = part.contains("单周");
+        let odd_only = part.contains("单周");
         let even_only = part.contains("双周");
 
-         let clean: String = part
+        let clean: String = part
             .replace("(单周)", "")
             .replace("（单周）", "")
             .replace("单周", "")

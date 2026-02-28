@@ -7,16 +7,18 @@
       :refresher-triggered="refreshing"
       @refresherrefresh="$emit('refresh')"
     >
-      <view
-        class="score-item"
-        v-for="item in scores"
-        :key="item.id"
-        @click="$emit('item-click', item)"
-      >
-        <view class="score-item-content">
-          <text class="course-name">{{ item.courseName }}</text>
-          <view class="score-badge" :class="getScoreClass(item.score)">
-            <text class="score-text">{{ item.score }}</text>
+      <view class="inset-group-container" v-if="scores && scores.length > 0">
+        <view
+          class="score-item active-scale"
+          v-for="item in scores"
+          :key="item.id"
+          @click="$emit('item-click', item)"
+        >
+          <view class="score-item-content">
+            <text class="course-name">{{ item.courseName }}</text>
+            <view class="score-badge" :class="getScoreClass(item.score)">
+              <text class="score-text">{{ item.score }}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -65,17 +67,26 @@ $text-secondary: #64748b;
   height: 100%;
 }
 
-.score-item {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 16rpx;
-  margin-bottom: 12rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.2s;
+/* Inset Group Container */
+.inset-group-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36rpx;
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
 
-  &:active {
-    transform: scale(0.98);
+.score-item {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: background 0.2s;
+  
+  &:last-child {
+    border-bottom: none;
   }
 }
 
@@ -83,25 +94,26 @@ $text-secondary: #64748b;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 24rpx;
+  padding: 32rpx 36rpx;
 }
 
 .course-name {
   flex: 1;
   font-size: 30rpx;
-  font-weight: 500;
+  font-weight: 600;
   color: $text-primary;
-  margin-right: 16rpx;
+  margin-right: 24rpx;
 }
 
 .score-badge {
-  min-width: 80rpx;
-  height: 80rpx;
+  min-width: 88rpx;
+  height: 88rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12rpx;
+  border-radius: 20rpx;
   flex-shrink: 0;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
 .score-text {

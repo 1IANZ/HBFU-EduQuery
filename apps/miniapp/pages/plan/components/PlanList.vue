@@ -8,19 +8,21 @@
       @refresherrefresh="$emit('refresh')"
     >
       <view class="course-list-content">
-        <view
-          v-for="item in plans"
-          :key="item.id"
-          class="course-card"
-          @click="$emit('item-click', item)"
-        >
-          <view class="course-header">
-            <text class="course-name">{{ item.courseName }}</text>
-            <view class="course-credits">{{ item.credits }} 学分</view>
+        <view class="inset-group-container" v-if="plans && plans.length > 0">
+          <view
+            v-for="item in plans"
+            :key="item.id"
+            class="course-item active-scale"
+            @click="$emit('item-click', item)"
+          >
+            <view class="course-header">
+              <text class="course-name">{{ item.courseName }}</text>
+              <view class="course-credits">{{ item.credits }} 学分</view>
+            </view>
           </view>
         </view>
 
-        <view v-if="plans.length === 0" class="empty-state">
+        <view v-if="!plans || plans.length === 0" class="empty-state">
           <uni-icons type="info-filled" size="80" color="#cbd5e1" />
           <text class="empty-text">暂无课程信息</text>
         </view>
@@ -65,19 +67,27 @@ $text-secondary: #64748b;
   padding-bottom: 120rpx;
 }
 
-.course-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 24rpx;
-  margin-bottom: 16rpx;
-  padding: 24rpx 28rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.2s;
+/* Inset Group Container */
+.inset-group-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36rpx;
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
 
-  &:active {
-    transform: scale(0.98);
+.course-item {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  padding: 32rpx 36rpx;
+  transition: background 0.2s;
+  
+  &:last-child {
+    border-bottom: none;
   }
 }
 

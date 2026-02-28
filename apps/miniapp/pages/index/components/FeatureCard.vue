@@ -1,5 +1,5 @@
 <template>
-  <view class="standard-card" @click="$emit('click')">
+  <view class="standard-card active-scale" @click="$emit('click')">
     <view class="card-icon" :class="theme">
       <slot name="icon" />
     </view>
@@ -17,7 +17,6 @@ defineEmits(["click"]);
 
 <style lang="scss" scoped>
 .standard-card {
-  background-color: #ffffff;
   border-radius: 24rpx;
   padding: 32rpx;
   height: 200rpx;

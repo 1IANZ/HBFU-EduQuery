@@ -6,68 +6,21 @@ $text-secondary: #64748b;
 .login-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f8fafc;
+  min-height: 100vh;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
+  padding: 40rpx 0;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  z-index: 0;
-  filter: blur(30rpx);
-  opacity: 0.4;
-}
+/* Blobs and glass-card are now in App.vue */
 
-.blob-1 {
-  width: 600rpx;
-  height: 600rpx;
-  background: radial-gradient(circle, #e0e7ff 0%, rgba(224, 231, 255, 0) 70%);
-  top: -200rpx;
-  left: -200rpx;
-  animation: float 12s infinite ease-in-out;
-}
-
-.blob-2 {
-  width: 500rpx;
-  height: 500rpx;
-  background: radial-gradient(circle, #dbeafe 0%, rgba(219, 234, 254, 0) 70%);
-  bottom: -150rpx;
-  right: -150rpx;
-  animation: float 15s infinite ease-in-out reverse;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(40rpx, 40rpx);
-  }
-}
-
-.glass-card {
-  position: relative;
-  z-index: 1;
+/* Login specific form wrapper adjustments if needed */
+.login-glass-wrap {
   width: 90%;
   max-width: 650rpx;
-  max-height: 85vh;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 48rpx;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow:
-    0 8rpx 12rpx -2rpx rgba(0, 0, 0, 0.05),
-    0 40rpx 50rpx -10rpx rgba(0, 0, 0, 0.05),
-    inset 0 0 40rpx rgba(255, 255, 255, 0.5);
   padding: 60rpx 50rpx;
-  box-sizing: border-box;
-  overflow-y: auto;
 }
 
 .section-title {

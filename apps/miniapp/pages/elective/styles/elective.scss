@@ -3,54 +3,21 @@ $text-primary: #1e293b;
 $text-secondary: #64748b;
 
 .container {
-  height: 100vh;
-  background: #f8fafc;
-  padding: 10rpx;
+  min-height: 100vh;
+  padding: 32rpx;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  z-index: 10;
   box-sizing: border-box;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40rpx);
-  opacity: 0.3;
-  z-index: 0;
-}
-
-.blob-1 {
-  width: 500rpx;
-  height: 500rpx;
-  background: radial-gradient(circle, #e0e7ff 0%, rgba(224, 231, 255, 0) 70%);
-  top: -150rpx;
-  left: -150rpx;
-  animation: float 12s infinite ease-in-out;
-}
-
-.blob-2 {
-  width: 400rpx;
-  height: 400rpx;
-  background: radial-gradient(circle, #dbeafe 0%, rgba(219, 234, 254, 0) 70%);
-  bottom: 100rpx;
-  right: -100rpx;
-  animation: float 15s infinite ease-in-out reverse;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(15rpx, 15rpx);
-  }
-}
+/* Global blobs used */
 
 .header-section {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 20rpx;
   padding: 16rpx;
   margin-bottom: 10rpx;
@@ -96,19 +63,15 @@ $text-secondary: #64748b;
 }
 
 .course-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 24rpx;
   margin-bottom: 16rpx;
   padding: 24rpx 28rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 1;
-  transition: transform 0.2s;
-
-  &:active {
-    transform: scale(0.98);
-  }
 }
 
 .course-header {
@@ -322,11 +285,9 @@ $text-secondary: #64748b;
   border-radius: 16rpx;
 
   &.highlight {
-    background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, 0.1) 0%,
-      rgba(59, 130, 246, 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(59, 130, 246, 0.05) 100%);
     color: $accent-color;
     font-weight: 600;
   }

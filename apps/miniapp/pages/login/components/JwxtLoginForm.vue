@@ -40,7 +40,7 @@
       </view>
     </view>
 
-    <button class="btn-submit" :loading="loading" @click="handleLogin">
+    <button class="btn-submit active-scale" :loading="loading" @click="handleLogin">
       登录教务系统
     </button>
 

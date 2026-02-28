@@ -18,11 +18,11 @@
 
     <!-- 周切换 -->
     <view class="week-nav">
-      <view class="nav-btn" @click="$emit('prev-week')">
+      <view class="nav-btn active-scale" @click="$emit('prev-week')">
         <uni-icons type="left" size="18" color="#3b82f6" />
       </view>
       <text class="week-text">第 {{ currentWeek }} 周</text>
-      <view class="nav-btn" @click="$emit('next-week')">
+      <view class="nav-btn active-scale" @click="$emit('next-week')">
         <uni-icons type="right" size="18" color="#3b82f6" />
       </view>
     </view>
@@ -68,13 +68,16 @@ $text-secondary: #64748b;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10rpx 16rpx;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20rpx;
-  margin-bottom: 10rpx;
+  padding: 20rpx 32rpx; /* Reduced vertical padding */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 36rpx;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin-bottom: 8rpx; /* Significantly reduced to bring table closer */
   position: relative;
-  z-index: 1;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.06);
 }
 
 .semester-picker {

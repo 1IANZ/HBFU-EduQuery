@@ -1,29 +1,100 @@
 <template>
-  <view class="dashboard-container">
-    <view class="content-wrapper">
-      <DashboardHeader
-        :student-name="studentName"
-        :student-id="studentId"
-        @profile="navigateTo('profile')"
-        @logout="handleLogout"
-      />
+  <view class="dashboard-page fluid-layout">
+    <!-- Atmosphere Blobs -->
+    <view class="blob blob-1"></view>
+    <view class="blob blob-2"></view>
 
-      <scroll-view scroll-y class="scroll-container">
-        <view class="section-header">
-          <text class="section-title">ACADEMIC</text>
-          <view class="section-line"></view>
+    <!-- Unified Hero Section -->
+    <view class="hero-section">
+      <view class="hero-top">
+        <view class="user-info">
+          <text class="greeting">Hi, {{ studentName || '同学' }}</text>
+          <text class="student-subtitle">{{ studentId || '加载中...' }}</text>
         </view>
+        <view class="hero-actions">
+          <view class="icon-btn" hover-class="icon-hover" @click="navigateTo('profile')">
+            <uni-icons type="person" size="22" color="#1e293b" />
+          </view>
+          <view class="icon-btn logout-btn" hover-class="icon-hover" @click="handleLogout">
+            <uni-icons type="redo" size="22" color="#ef4444" />
+          </view>
+        </view>
+      </view>
 
-        <FeatureGrid :items="featureItems" />
+      <!-- Primary Actions inside Hero -->
+      <view class="primary-action-row">
+        <view class="primary-btn course-btn active-scale" @click="navigateTo('course')">
+          <view class="p-icon"><uni-icons type="calendar-filled" size="24" color="#fff" /></view>
+          <text class="p-text">课程安排</text>
+        </view>
+        <view class="primary-btn score-btn active-scale" @click="navigateTo('score')">
+          <view class="p-icon"><uni-icons type="medal-filled" size="24" color="#fff" /></view>
+          <text class="p-text">成绩查询</text>
+        </view>
+      </view>
+    </view>
 
+    <!-- Horizontal Strip (Secondary Actions) -->
+    <view class="action-strip-container">
+      <scroll-view scroll-x class="action-strip" :show-scrollbar="false" enhanced>
+        <view class="strip-content">
+          <view class="strip-item active-scale" @click="navigateTo('exam')">
+            <view class="circle-icon red-light"><uni-icons type="compose" size="28" color="#ef4444" /></view>
+            <text class="strip-text">考试安排</text>
+          </view>
+          <view class="strip-item active-scale" @click="navigateTo('elective')">
+            <view class="circle-icon purple-light"><uni-icons type="paperplane-filled" size="28" color="#8b5cf6" /></view>
+            <text class="strip-text">选课中心</text>
+          </view>
+          <view class="strip-item active-scale" @click="navigateTo('plan')">
+            <view class="circle-icon indigo-light"><uni-icons type="info" size="28" color="#6366f1" /></view>
+            <text class="strip-text">执行计划</text>
+          </view>
+          <view class="strip-item active-scale" @click="navigateTo('dekt')">
+            <view class="circle-icon orange-light"><uni-icons type="flag-filled" size="28" color="#f59e0b" /></view>
+            <text class="strip-text">第二课堂</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- Inset Grouped Lists Instead of Blocks -->
+    <view class="content-body">
+      
+      <!-- Tools Inset Group -->
+      <view class="section-heading">校园服务</view>
+      <view class="inset-list">
+        <view class="list-item active-scale" @click="showImage('xiaoli.png')">
+          <view class="item-left">
+            <uni-icons type="calendar" size="22" color="#14b8a6" />
+            <text class="item-text">学校校历</text>
+          </view>
+          <uni-icons type="right" size="16" color="#cbd5e1" class="chevron" />
+        </view>
+        <view class="list-item active-scale" @click="showImage('ditu.png')">
+          <view class="item-left">
+            <uni-icons type="map-pin-ellipse" size="22" color="#06b6d4" />
+            <text class="item-text">学校地图</text>
+          </view>
+          <uni-icons type="right" size="16" color="#cbd5e1" class="chevron" />
+        </view>
+      </view>
+
+      <!-- Notices Inset Group -->
+      <view class="section-heading mt-lg">最新公告</view>
+      <view class="inset-list p-0">
         <NoticeList
           :messages="noticeMessages"
           :displayed="displayedNotices"
           :expanded="isNoticeExpanded"
           @toggle="toggleNoticeExpand"
+          class="fluid-notice-list"
         />
-      </scroll-view>
+      </view>
+      
     </view>
+    
+    <view class="safe-bottom-padding"></view>
   </view>
 </template>
 
@@ -33,8 +104,6 @@ import { getCachedImage } from "@/utils/imageCache.js";
 import API from "@/utils/api.js";
 import { clearConfigCache } from "@/utils/configCache.js";
 
-import DashboardHeader from "./components/DashboardHeader.vue";
-import FeatureGrid from "./components/FeatureGrid.vue";
 import NoticeList from "./components/NoticeList.vue";
 
 import { useDashboardUser } from "./hooks/useDashboardUser";
@@ -49,74 +118,6 @@ const {
   courseConfig,
   fetchSystemConfig,
 } = useDashboardConfig();
-
-const featureItems = [
-  {
-    key: "course",
-    title: "课程安排",
-    icon: "calendar-filled",
-    color: "#3b82f6",
-    theme: "theme-blue",
-    onClick: () => navigateTo("course"),
-  },
-  {
-    key: "score",
-    title: "成绩查询",
-    icon: "medal-filled",
-    color: "#10b981",
-    theme: "theme-green",
-    onClick: () => navigateTo("score"),
-  },
-  {
-    key: "exam",
-    title: "考试安排",
-    icon: "compose",
-    color: "#ef4444",
-    theme: "theme-red",
-    onClick: () => navigateTo("exam"),
-  },
-  {
-    key: "elective",
-    title: "选课中心",
-    icon: "paperplane-filled",
-    color: "#8b5cf6",
-    theme: "theme-purple",
-    onClick: () => navigateTo("elective"),
-  },
-  {
-    key: "plan",
-    title: "执行计划",
-    icon: "map-filled",
-    iconProps: { transform: "rotate(180)" },
-    color: "#6366f1",
-    theme: "theme-indigo",
-    onClick: () => navigateTo("plan"),
-  },
-  {
-    key: "dekt",
-    title: "第二课堂",
-    icon: "flag-filled",
-    color: "#f59e0b",
-    theme: "theme-orange",
-    onClick: () => navigateTo("dekt"),
-  },
-  {
-    key: "calendar",
-    title: "学校校历",
-    icon: "calendar",
-    color: "#14b8a6",
-    theme: "theme-teal",
-    onClick: () => showImage("xiaoli.png"),
-  },
-  {
-    key: "map",
-    title: "学校地图",
-    icon: "map-pin-ellipse",
-    color: "#06b6d4",
-    theme: "theme-cyan",
-    onClick: () => showImage("ditu.png"),
-  },
-];
 
 const handleLogout = () => {
   uni.showModal({

@@ -16,7 +16,7 @@
         </view>
       </picker>
 
-      <view class="sort-btn" @click="$emit('toggle-sort')">
+      <view class="sort-btn active-scale" @click="$emit('toggle-sort')">
         <uni-icons
           :type="
             sortOrder === 'desc'
@@ -95,21 +95,24 @@ $accent-color: #3b82f6;
 $text-secondary: #64748b;
 
 .header-section {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20rpx;
-  padding: 16rpx;
-  margin-bottom: 10rpx;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
   position: relative;
-  z-index: 1;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  box-shadow: 0 12rpx 32rpx rgba(148, 163, 184, 0.06);
 }
 
 .header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12rpx;
-  margin-bottom: 12rpx;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
 }
 
 .semester-picker {
@@ -163,9 +166,10 @@ $text-secondary: #64748b;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12rpx 8rpx;
-  border-radius: 16rpx;
-  border: 2px solid;
+  padding: 16rpx 12rpx;
+  border-radius: 24rpx;
+  border: 1px solid;
+  backdrop-filter: blur(8px);
 }
 
 .pass-fail-item.pass {

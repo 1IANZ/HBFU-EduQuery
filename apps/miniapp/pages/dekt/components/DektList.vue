@@ -30,7 +30,7 @@
 
           <view class="group-body" v-if="group.isExpanded">
             <view
-              class="dekt-card"
+              class="dekt-item active-scale"
               v-for="(item, iIndex) in group.items"
               :key="item.id"
               @click="$emit('item-click', item)"
@@ -108,24 +108,27 @@ $text-sub: #64748b;
   padding-bottom: 40rpx;
 }
 
-/* Group Section */
+/* Group Section acts as Inset Container */
 .group-section {
-  margin-bottom: 24rpx;
-  background: #fff;
-  border-radius: 20rpx;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36rpx;
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
   overflow: hidden;
-  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.03);
+  margin-bottom: 32rpx;
 }
 
 .group-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24rpx 32rpx;
-  background: #fff;
+  padding: 32rpx;
+  background: transparent;
 
   &:active {
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.4);
   }
 }
 
@@ -161,28 +164,22 @@ $text-sub: #64748b;
 }
 
 .group-body {
-  padding: 24rpx;
-  background: #f8fafc;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* Item Card */
-.dekt-card {
-  background: #ffffff;
-  border-radius: 16rpx;
-  padding: 24rpx;
-  margin-bottom: 16rpx;
+.dekt-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e2e8f0;
+  padding: 32rpx;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  position: relative;
+  z-index: 10;
+  transition: background 0.2s;
 
   &:last-child {
-    margin-bottom: 0;
-  }
-
-  &:active {
-    transform: scale(0.99);
+    border-bottom: none;
   }
 }
 

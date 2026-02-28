@@ -3,7 +3,7 @@
     <view class="blob blob-1"></view>
     <view class="blob blob-2"></view>
 
-    <view class="glass-card">
+    <view class="glass-card login-glass-wrap">
       <LoginHeader />
 
       <!-- 检测状态 -->

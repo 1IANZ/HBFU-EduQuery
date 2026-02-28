@@ -1,116 +1,108 @@
 <template>
-  <view class="container">
+  <view class="profile-container">
     <!-- Atmosphere Blobs -->
     <view class="blob blob-1"></view>
     <view class="blob blob-2"></view>
 
-    <view class="glass-card">
-      <view class="form-content">
-        <!-- Name -->
-        <view class="input-group">
-          <text class="label">姓名</text>
-          <view class="value-box" @click="copyText(userInfo.name, '姓名')">
-            <text>{{ userInfo.name || "-" }}</text>
+    <!-- Hero Header -->
+    <view class="profile-hero">
+      <view class="avatar-wrapper">
+        <uni-icons type="person-filled" size="60" color="#fff" />
+      </view>
+      <text class="hero-name">{{ userInfo.name || '姓名' }}</text>
+      <view class="hero-badges">
+        <view class="badge origin-badge">{{ userInfo.department || '未知学院' }}</view>
+        <view class="badge major-badge">{{ userInfo.major || '未知专业' }}</view>
+      </view>
+    </view>
+
+    <!-- Inset Grouped Settings -->
+    <view class="settings-list">
+      
+      <!-- Group 1: Basic Stats -->
+      <view class="inset-group">
+        <view class="setting-item" @click="copyText(userInfo.gender, '性别')">
+          <view class="item-left">
+            <view class="icon-box blue-bg"><uni-icons type="info" size="18" color="#3b82f6" /></view>
+            <text class="item-label">性别</text>
+          </view>
+          <view class="item-right">
+            <text class="item-value">{{ userInfo.gender || '-' }}</text>
+          </view>
+        </view>
+        <view class="setting-item" @click="copyText(userInfo.class, '班级')">
+          <view class="item-left">
+            <view class="icon-box green-bg"><uni-icons type="flag-filled" size="18" color="#10b981" /></view>
+            <text class="item-label">班级</text>
+          </view>
+          <view class="item-right">
+            <text class="item-value">{{ userInfo.class || '-' }}</text>
+          </view>
+        </view>
+        <view class="setting-item" @click="copyText(userInfo.admissionDate, '入学日期')">
+          <view class="item-left">
+            <view class="icon-box purple-bg"><uni-icons type="calendar-filled" size="18" color="#8b5cf6" /></view>
+            <text class="item-label">入学日期</text>
+          </view>
+          <view class="item-right">
+            <text class="item-value">{{ userInfo.admissionDate || '-' }}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- Group 2: Identity & Security -->
+      <view class="group-title">身份信息</view>
+      <view class="inset-group">
+        <view class="setting-item" @click="copyText(userInfo.studentId, '学号')">
+          <view class="item-left">
+            <view class="icon-box indigo-bg"><uni-icons type="vip-filled" size="18" color="#6366f1" /></view>
+            <text class="item-label">学号</text>
+          </view>
+          <view class="item-right">
+            <text class="item-value mono-text">{{ userInfo.studentId || '-' }}</text>
+          </view>
+        </view>
+        
+        <view class="setting-item" @click="copyText(userInfo.admissionNumber, '考生号')">
+          <view class="item-left">
+            <view class="icon-box orange-bg"><uni-icons type="star-filled" size="18" color="#f59e0b" /></view>
+            <text class="item-label">考生号</text>
+          </view>
+          <view class="item-right">
+            <text class="item-value mono-text">{{ userInfo.admissionNumber || '-' }}</text>
           </view>
         </view>
 
-        <!-- Gender -->
-        <view class="input-group">
-          <text class="label">性别</text>
-          <view class="value-box" @click="copyText(userInfo.gender, '性别')">
-            <text>{{ userInfo.gender || "-" }}</text>
+        <view class="setting-item" @click="copyText(userInfo.idNumber, '身份证号')">
+          <view class="item-left">
+            <view class="icon-box red-bg"><uni-icons type="auth-filled" size="18" color="#ef4444" /></view>
+            <text class="item-label">身份证号</text>
           </view>
-        </view>
-
-        <!-- Student ID -->
-        <view class="input-group">
-          <text class="label">学号</text>
-          <view class="value-box" @click="copyText(userInfo.studentId, '学号')">
-            <text>{{ userInfo.studentId || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- Department -->
-        <view class="input-group">
-          <text class="label">院系</text>
-          <view
-            class="value-box"
-            @click="copyText(userInfo.department, '院系')"
-          >
-            <text>{{ userInfo.department || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- Major -->
-        <view class="input-group">
-          <text class="label">专业</text>
-          <view class="value-box" @click="copyText(userInfo.major, '专业')">
-            <text>{{ userInfo.major || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- Class -->
-        <view class="input-group">
-          <text class="label">班级</text>
-          <view class="value-box" @click="copyText(userInfo.class, '班级')">
-            <text>{{ userInfo.class || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- Admission Date -->
-        <view class="input-group">
-          <text class="label">入学日期</text>
-          <view
-            class="value-box"
-            @click="copyText(userInfo.admissionDate, '入学日期')"
-          >
-            <text>{{ userInfo.admissionDate || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- Admission Number -->
-        <view class="input-group">
-          <text class="label">考生号</text>
-          <view
-            class="value-box"
-            @click="copyText(userInfo.admissionNumber, '考生号')"
-          >
-            <text>{{ userInfo.admissionNumber || "-" }}</text>
-          </view>
-        </view>
-
-        <!-- ID Number (Masked) -->
-        <view class="input-group">
-          <text class="label">身份证号</text>
-          <view
-            class="value-box id-box"
-            @click="copyText(userInfo.idNumber, '身份证号')"
-          >
-            <text>{{
-              showIdNumber ? userInfo.idNumber || "-" : maskedIdNumber
-            }}</text>
-            <view class="eye-icon" @click.stop="toggleIdVisibility">
+          <view class="item-right">
+            <text class="item-value mono-text">{{ showIdNumber ? userInfo.idNumber || '-' : maskedIdNumber }}</text>
+            <view class="action-icon" @click.stop="toggleIdVisibility">
               <uni-icons
                 :type="showIdNumber ? 'eye-filled' : 'eye-slash-filled'"
-                size="24"
-                color="#3b82f6"
-              ></uni-icons>
+                size="20"
+                color="#94a3b8"
+              />
             </view>
           </view>
         </view>
       </view>
+
     </view>
+    <view style="height: 100rpx"></view>
   </view>
 </template>
 
 <script setup>
 import { computed, onMounted, reactive, ref } from "vue";
 
-// 响应式数据
+// Data
 const userInfo = reactive({});
 const showIdNumber = ref(false);
 
-// 计算属性
 const maskedIdNumber = computed(() => {
   const id = userInfo.idNumber;
   if (!id) return "-";
@@ -124,7 +116,6 @@ const maskedIdNumber = computed(() => {
   return "****************";
 });
 
-// 方法
 const toggleIdVisibility = () => {
   showIdNumber.value = !showIdNumber.value;
 };
@@ -135,14 +126,13 @@ const copyText = (text, label) => {
     data: text,
     success: () => {
       uni.showToast({
-        title: "复制成功",
+        title: label + "已复制",
         icon: "none",
       });
     },
   });
 };
 
-// 生命周期
 onMounted(() => {
   const storedInfo = uni.getStorageSync("userInfo");
   if (storedInfo) {
@@ -152,117 +142,166 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-$accent-color: #3b82f6;
-$text-primary: #1e293b;
-$text-secondary: #64748b;
-
-.container {
+.profile-container {
   min-height: 100vh;
-  background-color: #f8fafc;
-  padding: 40rpx;
+  padding: 0 32rpx;
+  padding-top: calc(100rpx + var(--status-bar-height));
+  position: relative;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Hero Section */
+.profile-hero {
   display: flex;
-  justify-content: center;
-  padding-top: calc(40rpx + var(--status-bar-height));
-  position: relative;
-  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
 }
 
-.blob {
-  position: absolute;
+.avatar-wrapper {
+  width: 180rpx;
+  height: 180rpx;
   border-radius: 50%;
-  z-index: 0;
-  filter: blur(40rpx);
-  opacity: 0.3;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16rpx 32rpx rgba(59, 130, 246, 0.25);
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 24rpx;
 }
 
-.blob-1 {
-  width: 600rpx;
-  height: 600rpx;
-  background: radial-gradient(circle, #e0e7ff 0%, rgba(224, 231, 255, 0) 70%);
-  top: -200rpx;
-  left: -200rpx;
-  animation: float 8s infinite ease-in-out;
+.hero-name {
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 16rpx;
+  text-shadow: 0 2rpx 10rpx rgba(255, 255, 255, 0.8);
 }
 
-.blob-2 {
-  width: 500rpx;
-  height: 500rpx;
-  background: radial-gradient(circle, #dbeafe 0%, rgba(219, 234, 254, 0) 70%);
-  bottom: -150rpx;
-  right: -150rpx;
-  animation: float 10s infinite ease-in-out reverse;
+.hero-badges {
+  display: flex;
+  gap: 16rpx;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(20rpx, 20rpx);
-  }
+.badge {
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
 }
 
-.glass-card {
-  width: 100%;
-  max-width: 650rpx;
-  background: rgba(255, 255, 255, 0.9);
-  /* backdrop-filter: blur(20px); Performance optimization */
-  border-radius: 40rpx;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8rpx 20rpx -6rpx rgba(0, 0, 0, 0.05);
-  padding: 60rpx 40rpx;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 40rpx; /* Bottom space */
+.origin-badge {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-.form-content {
+.major-badge {
+  background: rgba(139, 92, 246, 0.15);
+  color: #7c3aed;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* Inset Groups */
+.settings-list {
   display: flex;
   flex-direction: column;
   gap: 32rpx;
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12rpx;
-}
-
-.label {
+.group-title {
+  margin-left: 16rpx;
+  margin-bottom: -16rpx;
   font-size: 26rpx;
-  color: $text-secondary;
-  font-weight: 500;
-  padding-left: 8rpx;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.value-box {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 24rpx 32rpx;
-  border-radius: 20rpx;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  font-size: 30rpx;
-  color: $text-primary;
-  font-weight: 500;
-  min-height: 44rpx; /* Ensure height if empty */
+.inset-group {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 32rpx;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  overflow: hidden;
+}
+
+.setting-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 32rpx;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  transition: background 0.2s;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   &:active {
     background: rgba(255, 255, 255, 0.9);
   }
-
-  &.id-box {
-    justify-content: space-between;
-    padding-right: 20rpx;
-  }
 }
 
-.eye-icon {
-  padding: 10rpx;
+.item-left {
   display: flex;
   align-items: center;
-  z-index: 10;
-  flex-shrink: 0;
+  gap: 20rpx;
+}
+
+.icon-box {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue-bg { background: rgba(59, 130, 246, 0.15); }
+.green-bg { background: rgba(16, 185, 129, 0.15); }
+.purple-bg { background: rgba(139, 92, 246, 0.15); }
+.indigo-bg { background: rgba(99, 102, 241, 0.15); }
+.orange-bg { background: rgba(245, 158, 11, 0.15); }
+.red-bg { background: rgba(239, 68, 68, 0.15); }
+
+.item-label {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #334155;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.item-value {
+  font-size: 28rpx;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.mono-text {
+  font-family: monospace;
+  font-size: 26rpx;
+  letter-spacing: 0.5px;
+}
+
+.action-icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(241, 245, 249, 0.8);
 }
 </style>

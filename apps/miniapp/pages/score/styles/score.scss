@@ -3,13 +3,12 @@ $text-primary: #1e293b;
 $text-secondary: #64748b;
 
 .container {
-  height: 100vh;
-  background: #f8fafc;
-  padding: 10rpx;
+  min-height: 100vh;
+  padding: 32rpx;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  z-index: 10;
   box-sizing: border-box;
 }
 
@@ -21,41 +20,7 @@ $text-secondary: #64748b;
   overflow: hidden;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40rpx);
-  opacity: 0.3;
-  z-index: 0;
-}
-
-.blob-1 {
-  width: 500rpx;
-  height: 500rpx;
-  background: radial-gradient(circle, #e0e7ff 0%, rgba(224, 231, 255, 0) 70%);
-  top: -150rpx;
-  left: -150rpx;
-  animation: float 12s infinite ease-in-out;
-}
-
-.blob-2 {
-  width: 400rpx;
-  height: 400rpx;
-  background: radial-gradient(circle, #dbeafe 0%, rgba(219, 234, 254, 0) 70%);
-  bottom: 100rpx;
-  right: -100rpx;
-  animation: float 15s infinite ease-in-out reverse;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(15rpx, 15rpx);
-  }
-}
+/* Blobs removed as they are loaded globally */
 
 /* Popup */
 .popup-overlay {

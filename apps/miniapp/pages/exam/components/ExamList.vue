@@ -7,9 +7,9 @@
       :refresher-triggered="refreshing"
       @refresherrefresh="$emit('refresh')"
     >
-      <view class="exam-list-content">
+      <view class="inset-group-container" v-if="examList && examList.length > 0">
         <view
-          class="exam-card"
+          class="exam-item active-scale"
           v-for="item in examList"
           :key="item.id"
           @click="$emit('item-click', item)"
@@ -37,11 +37,11 @@
             </view>
           </view>
         </view>
+      </view>
 
-        <view v-if="examList.length === 0" class="empty-state">
-          <uni-icons type="info-filled" size="80" color="#cbd5e1" />
-          <text class="empty-text">暂无考试安排</text>
-        </view>
+      <view v-if="!examList || examList.length === 0" class="empty-state">
+        <uni-icons type="info-filled" size="80" color="#cbd5e1" />
+        <text class="empty-text">暂无考试安排</text>
       </view>
     </scroll-view>
   </view>
@@ -88,19 +88,27 @@ $text-secondary: #64748b;
   padding-bottom: 20rpx;
 }
 
-.exam-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 24rpx;
-  margin-bottom: 16rpx;
-  padding: 24rpx 28rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.2s;
+/* Inset Group Container */
+.inset-group-container {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 36rpx;
+  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
 
-  &:active {
-    transform: scale(0.98);
+.exam-item {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  padding: 32rpx 36rpx;
+  position: relative;
+  z-index: 10;
+  transition: background 0.2s;
+  
+  &:last-child {
+    border-bottom: none;
   }
 }
 

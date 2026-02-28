@@ -15,7 +15,7 @@
       :week-days="weekDays"
       :sections="sections"
       :current-week="currentWeek"
-      :actual-week="actualWeek"
+      :actual-week="actualWeek || currentWeek" 
       :get-course="getCourse"
       :get-course-color="getCourseColor"
       @course-click="showCourseDetail"

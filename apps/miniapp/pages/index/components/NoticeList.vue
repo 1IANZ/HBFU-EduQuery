@@ -1,12 +1,7 @@
 <template>
   <view v-if="messages.length > 0">
-    <view class="section-header">
-      <text class="section-title">NOTICES</text>
-      <view class="section-line"></view>
-    </view>
-
     <view class="notice-list">
-      <view class="notice-item" v-for="(msg, index) in displayed" :key="index">
+      <view class="notice-item active-scale" v-for="(msg, index) in displayed" :key="index">
         <text class="notice-title">{{ msg }}</text>
         <text class="notice-author">Alex</text>
       </view>
@@ -42,18 +37,19 @@ defineEmits(["toggle"]);
   flex-direction: column;
   gap: 16rpx;
 }
-.notice-item {
-  background-color: #fff;
-  padding: 24rpx 32rpx;
-  border-radius: 20rpx;
-  display: flex;
-  justify-content: space-between;
-}
+/* Note: .notice-item styles are kept in dashboard.scss globally for this module context, we remove the scoped explicit background here so it inherits */
 .notice-title {
   font-size: 28rpx;
+  flex: 1;
+  margin-right: 16rpx;
+  /* Truncate long text so it doesn't overlap */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .notice-author {
   color: #cbd5e1;
+  flex-shrink: 0;
 }
 .notice-expand-btn {
   text-align: center;

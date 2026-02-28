@@ -63,7 +63,7 @@
       ></image>
     </view>
 
-    <button class="btn-submit" :loading="loading" @click="handleSubmit">
+    <button class="btn-submit active-scale" :loading="loading" @click="handleSubmit">
       连接VPN
     </button>
   </view>
