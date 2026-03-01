@@ -171,12 +171,12 @@ const showImage = async (imageName) => {
 const navigateTo = (page) => {
   const routes = {
     profile: "/pages/profile/profile",
-    course: "/pages/course/course",
-    score: "/pages/score/score",
-    exam: "/pages/exam/exam",
-    elective: "/pages/elective/elective",
-    plan: "/pages/plan/plan",
-    dekt: "/pages/dekt/dekt",
+    course: "/subpkg/course/course",
+    score: "/subpkg/score/score",
+    exam: "/subpkg/exam/exam",
+    elective: "/subpkg/elective/elective",
+    plan: "/subpkg/plan/plan",
+    dekt: "/subpkg/dekt/dekt",
   };
 
   if (!routes[page]) {
