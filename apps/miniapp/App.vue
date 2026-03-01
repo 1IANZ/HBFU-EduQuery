@@ -58,6 +58,7 @@ page {
   --text-sub: #64748b;
   --accent-color: #3b82f6;
   --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --custom-navbar-safe-height: calc(env(safe-area-inset-top) + 44px);
 
   background-color: var(--bg-body);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -76,6 +77,7 @@ page {
     --text-sub: #909090;
     --accent-color: #3b82f6;
     --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --custom-navbar-safe-height: calc(env(safe-area-inset-top) + 44px);
   }
 }
 

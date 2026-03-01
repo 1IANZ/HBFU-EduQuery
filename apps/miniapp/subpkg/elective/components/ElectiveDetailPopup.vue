@@ -73,6 +73,11 @@ $text-secondary: #64748b;
 .popup-overlay {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: var(--custom-navbar-safe-height);
+  padding-bottom: env(safe-area-inset-bottom);
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
@@ -83,7 +88,7 @@ $text-secondary: #64748b;
 .popup-card {
   width: 640rpx;
   max-width: 92vw;
-  max-height: 78vh;
+  max-height: calc(100vh - var(--custom-navbar-safe-height) - env(safe-area-inset-bottom) - 48rpx);
   background: var(--bg-card);
   border-radius: 32rpx;
   overflow: hidden;

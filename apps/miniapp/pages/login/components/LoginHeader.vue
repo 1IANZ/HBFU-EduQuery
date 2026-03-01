@@ -8,8 +8,6 @@
 <script setup></script>
 
 <style lang="scss" scoped>
-$text-primary: #1e293b;
-$text-secondary: #64748b;
 
 .header {
   text-align: center;
@@ -20,7 +18,7 @@ $text-secondary: #64748b;
 
   .title {
     font-size: 44rpx;
-    color: $text-primary;
+    color: var(--text-main);
     font-weight: 700;
     letter-spacing: -0.5px;
     margin-bottom: 8rpx;
@@ -28,7 +26,7 @@ $text-secondary: #64748b;
 
   .subtitle {
     font-size: 26rpx;
-    color: $text-secondary;
+    color: var(--text-sub);
   }
 }
 </style>

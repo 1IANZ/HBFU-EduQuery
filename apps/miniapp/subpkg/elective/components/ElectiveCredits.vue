@@ -66,12 +66,12 @@ $text-secondary: #64748b;
 }
 
 .credit-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card);
   border-radius: 20rpx;
   margin-bottom: 16rpx;
   overflow: hidden;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-card);
 }
 
 .credit-card-header {
@@ -97,7 +97,7 @@ $text-secondary: #64748b;
   justify-content: space-between;
   align-items: center;
   padding: 12rpx 16rpx;
-  background: #f8fafc;
+  background: var(--bg-body);
   border-radius: 12rpx;
 
   &.total-item {
@@ -108,13 +108,13 @@ $text-secondary: #64748b;
 
 .credit-label {
   font-size: 26rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   font-weight: 500;
 }
 
 .credit-value {
   font-size: 28rpx;
-  color: $text-primary;
+  color: var(--text-main);
   font-weight: 600;
 
   &.total-value {

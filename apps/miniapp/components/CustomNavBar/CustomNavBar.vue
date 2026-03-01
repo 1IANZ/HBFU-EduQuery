@@ -1,5 +1,10 @@
 <template>
-  <view class="nav-bar-wrapper" :style="{ backgroundColor: bgColor }">
+  <view>
+    <!-- Placeholder to prevent content from jumping up when fixed -->
+    <view :style="{ height: (statusBarHeight + navBarHeight) + 'px' }"></view>
+
+    <!-- Fixed Header -->
+    <view class="nav-bar-wrapper" :style="{ backgroundColor: bgColor }">
     <view :style="{ height: statusBarHeight + 'px' }"></view>
     <view class="nav-bar-content" :style="{ height: navBarHeight + 'px' }">
       <view class="nav-left" @click="handleBack" v-if="showBack">
@@ -12,6 +17,7 @@
         </text>
       </view>
       <view class="nav-right" :style="{ width: menuButtonWidth + 'px' }"></view>
+    </view>
     </view>
   </view>
 </template>
@@ -30,7 +36,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: 'transparent'
+    default: 'var(--bg-card-glass)'
   },
   textColor: {
     type: String,
@@ -67,12 +73,19 @@ const handleBack = () => {
 
 <style lang="scss" scoped>
 .nav-bar-wrapper {
-  position: sticky;
-  top: 0;
+  position: fixed !important;
+  top: 0 !important;
   left: 0;
-  right: 0;
-  z-index: 1000;
+  width: 100vw;
+  box-sizing: border-box;
+  z-index: 1100;
+  pointer-events: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: background-color 0.3s ease;
+  border-bottom: 1px solid var(--border-card);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
 
 .nav-bar-content {

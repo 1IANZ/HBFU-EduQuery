@@ -34,17 +34,16 @@ defineEmits(["update:modelValue"]);
 </script>
 
 <style lang="scss" scoped>
-$accent-color: #3b82f6;
-$text-secondary: #64748b;
+$accent-color: var(--accent-color, #3b82f6);
 
 .tab-switcher {
   display: flex;
   position: relative;
   margin-bottom: 48rpx;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--bg-card-glass);
   border-radius: 28rpx;
   padding: 8rpx;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-glass);
 }
 
 .tab-item {
@@ -63,7 +62,7 @@ $text-secondary: #64748b;
 
 .tab-text {
   font-size: 28rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   transition: all 0.3s;
 }
 
@@ -71,12 +70,12 @@ $text-secondary: #64748b;
   position: absolute;
   width: 50%;
   height: calc(100% - 16rpx);
-  background: white;
+  background: var(--bg-card);
   border-radius: 24rpx;
   top: 8rpx;
   left: 8rpx;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-light);
   z-index: 1;
 
   &.tab-qrcode {

@@ -1,7 +1,5 @@
-$accent-color: #3b82f6;
+$accent-color: var(--accent-color, #3b82f6);
 $accent-glow: rgba(59, 130, 246, 0.4);
-$text-primary: #1e293b;
-$text-secondary: #64748b;
 
 .login-container {
   display: flex;
@@ -11,7 +9,8 @@ $text-secondary: #64748b;
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 40rpx 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: var(--bg-body);
 }
 
@@ -131,7 +130,7 @@ $text-secondary: #64748b;
     height: 100rpx;
     border-radius: 25rpx;
     opacity: 0.9;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-glass);
     flex-shrink: 0;
 
     &:active {
@@ -192,8 +191,8 @@ $text-secondary: #64748b;
   text-align: center;
   padding: 20rpx;
   border-radius: 28rpx;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: var(--bg-card-glass);
+  border: 1px solid var(--border-glass);
 }
 
 .status-text {

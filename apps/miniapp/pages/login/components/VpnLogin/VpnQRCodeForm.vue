@@ -3,11 +3,16 @@
     <view class="qr-code-section">
       <view class="qr-code-wrapper">
         <view v-if="qrCodeImage" class="qr-code-container">
-          <image :src="qrCodeImage" class="qr-code-image" mode="aspectFit" />
+          <image
+            :src="qrCodeImage"
+            class="qr-code-image"
+            mode="aspectFit"
+            show-menu-by-longpress
+          />
         </view>
 
         <view v-else class="qr-code-placeholder" @click="getQRCode">
-          <uni-icons type="scan" size="60" color="#94a3b8" />
+          <uni-icons type="scan" size="60" color="var(--text-sub)" />
           <text class="placeholder-text">点击获取二维码</text>
         </view>
       </view>

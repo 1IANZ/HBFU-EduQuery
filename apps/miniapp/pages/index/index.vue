@@ -53,7 +53,7 @@
           <view class="nav-icon-box text-violet">
             <uni-icons type="paperplane-filled" size="24" color="#8b5cf6" />
           </view>
-          <text class="nav-text">选课查询</text>
+          <text class="nav-text">选课信息</text>
         </view>
 
         <!-- Plan -->

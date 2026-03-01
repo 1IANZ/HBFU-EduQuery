@@ -11,7 +11,7 @@
         placeholder-class="placeholder-style"
       />
       <view class="input-icon-wrapper">
-        <uni-icons type="person" size="20" color="#94a3b8"></uni-icons>
+        <uni-icons type="person" size="20" color="var(--text-sub)"></uni-icons>
       </view>
     </view>
 
@@ -26,7 +26,7 @@
         placeholder-class="placeholder-style"
       />
       <view class="input-icon-wrapper">
-        <uni-icons type="locked" size="20" color="#94a3b8"></uni-icons>
+        <uni-icons type="locked" size="20" color="var(--text-sub)"></uni-icons>
       </view>
       <view
         class="eye-icon-wrapper"
@@ -35,7 +35,7 @@
         <uni-icons
           :type="showVpnPassword ? 'eye-filled' : 'eye-slash-filled'"
           size="20"
-          color="#94a3b8"
+          color="var(--text-sub)"
         ></uni-icons>
       </view>
     </view>
@@ -51,7 +51,7 @@
           placeholder-class="placeholder-style"
         />
         <view class="input-icon-wrapper">
-          <uni-icons type="info" size="20" color="#94a3b8"></uni-icons>
+          <uni-icons type="info" size="20" color="var(--text-sub)"></uni-icons>
         </view>
       </view>
 

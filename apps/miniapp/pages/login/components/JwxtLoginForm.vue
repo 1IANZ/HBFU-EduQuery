@@ -13,7 +13,7 @@
         placeholder-class="placeholder-style"
       />
       <view class="input-icon-wrapper">
-        <uni-icons type="person" size="20" color="#94a3b8" />
+        <uni-icons type="person" size="20" color="var(--text-sub)" />
       </view>
     </view>
 
@@ -29,13 +29,13 @@
       />
 
       <view class="input-icon-wrapper">
-        <uni-icons type="locked" size="20" color="#94a3b8" />
+        <uni-icons type="locked" size="20" color="var(--text-sub)" />
       </view>
       <view class="eye-icon-wrapper" @click="showPassword = !showPassword">
         <uni-icons
           :type="showPassword ? 'eye-filled' : 'eye-slash-filled'"
           size="20"
-          color="#94a3b8"
+          color="var(--text-sub)"
         />
       </view>
     </view>
@@ -45,7 +45,7 @@
     </button>
 
     <view class="contact-btn" @click="$emit('back-to-vpn')">
-      <text class="contact-text" style="color: #64748b; font-size: 24rpx">
+      <text class="contact-text" style="color: var(--text-sub); font-size: 24rpx">
         重新登录 VPN
       </text>
     </view>

@@ -63,6 +63,11 @@ $accent-color: #3b82f6;
 .popup-overlay {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: var(--custom-navbar-safe-height);
+  padding-bottom: env(safe-area-inset-bottom);
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
@@ -73,7 +78,7 @@ $accent-color: #3b82f6;
 .popup-card {
   width: 640rpx;
   max-width: 92vw;
-  max-height: 78vh;
+  max-height: calc(100vh - var(--custom-navbar-safe-height) - env(safe-area-inset-bottom) - 48rpx);
   background: var(--bg-card);
   border-radius: 32rpx;
   overflow: hidden;
@@ -113,7 +118,8 @@ $accent-color: #3b82f6;
 .popup-body {
   flex: 1;
   min-height: 0;
-  padding: 40rpx 40rpx 20rpx;
+  max-height: 60vh;
+  padding: 32rpx;
   overflow-y: auto;
 }
 

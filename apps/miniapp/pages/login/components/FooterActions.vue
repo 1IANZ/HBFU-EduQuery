@@ -34,8 +34,6 @@ const showUpdateLog = () => {
 </script>
 
 <style lang="scss" scoped>
-$text-secondary: #64748b;
-
 .footer-buttons {
   display: flex;
   justify-content: center;
