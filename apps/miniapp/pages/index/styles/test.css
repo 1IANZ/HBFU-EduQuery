@@ -2,8 +2,7 @@
  * V4: NEO-MINIMALIST AGENDA LAYOUT 
  * Pure typography. No cards. No gradients. No blobs. 
  * ------------------------------------------------------------- */
-
- .dashboard-page {
+.dashboard-page {
   min-height: 100vh;
   padding-bottom: 200rpx;
   background-color: #f8fafc; /* Pure off-white monochrome base */
@@ -111,8 +110,13 @@
   border-radius: 50%;
 }
 
-.blue-dot { background-color: #3b82f6; }
-.emerald-dot { background-color: #10b981; }
+.blue-dot {
+  background-color: #3b82f6;
+}
+
+.emerald-dot {
+  background-color: #10b981;
+}
 
 .agenda-content {
   flex: 1;
@@ -160,10 +164,9 @@
   padding: 36rpx 48rpx;
   border-bottom: 1px solid #f1f5f9;
   transition: background-color 0.2s;
-  
-  &:last-child {
-    border-bottom: none;
-  }
+}
+.menu-row:last-child {
+  border-bottom: none;
 }
 
 .menu-left {
@@ -182,38 +185,34 @@
 .minimal-notice-list {
   border-top: 1px solid #e2e8f0;
   border-bottom: 1px solid #e2e8f0;
-  
-  .notice-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 32rpx 48rpx;
-    border-bottom: 1px solid #f1f5f9;
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .notice-title {
-    font-size: 28rpx;
-    font-weight: 600;
-    color: #0f172a;
-    flex: 1;
-    margin-right: 24rpx;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .notice-author {
-    font-size: 24rpx;
-    color: #94a3b8;
-    flex-shrink: 0;
-  }
+}
+.minimal-notice-list .notice-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 48rpx;
+  border-bottom: 1px solid #f1f5f9;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.minimal-notice-list .notice-item:last-child {
+  border-bottom: none;
+}
+.minimal-notice-list .notice-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #0f172a;
+  flex: 1;
+  margin-right: 24rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.minimal-notice-list .notice-author {
+  font-size: 24rpx;
+  color: #94a3b8;
+  flex-shrink: 0;
 }
 
 /* Interaction States */
@@ -230,3 +229,5 @@
   height: 100rpx;
   width: 100%;
 }
+
+/*# sourceMappingURL=test.css.map */

@@ -10,7 +10,8 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "河金小助手"
+        "navigationBarTitleText": "河金小助手",
+        "enablePullDownRefresh": false
       }
     },
     {
@@ -61,7 +62,10 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "河金小助手",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "backgroundColor": "#F5F7FA"
+    "backgroundColor": "#F5F7FA",
+    "backgroundColorTop": "#F5F7FA",
+    "backgroundColorBottom": "#F5F7FA",
+    "enablePullDownRefresh": false
   },
   "easycom": {
     "autoscan": true,

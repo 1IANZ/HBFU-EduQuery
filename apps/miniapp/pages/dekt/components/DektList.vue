@@ -3,9 +3,6 @@
     <scroll-view
       scroll-y
       class="scroll-view-content"
-      refresher-enabled
-      :refresher-triggered="refreshing"
-      @refresherrefresh="$emit('refresh')"
     >
       <view class="list-content">
         <view

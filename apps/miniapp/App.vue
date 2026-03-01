@@ -46,53 +46,47 @@ onHide(() => {});
 </script>
 
 <style>
+/* Global CSS Variable System */
 page {
-  background-color: #f8fafc;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-  color: #1e293b;
+  /* Light Mode (Default) Variables */
+  --bg-body: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-glass: rgba(255, 255, 255, 0.65);
+  --border-card: #f1f5f9;
+  --border-glass: rgba(255, 255, 255, 0.9);
+  --text-main: #1e293b;
+  --text-sub: #64748b;
+  --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  background-color: var(--bg-body);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
 }
 
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
-  filter: blur(60rpx);
-  opacity: 0.5;
-  pointer-events: none;
-}
-.blob-1 {
-  width: 700rpx;
-  height: 700rpx;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0) 70%);
-  top: -150rpx;
-  left: -200rpx;
-  animation: float 14s infinite ease-in-out;
-}
-.blob-2 {
-  width: 650rpx;
-  height: 650rpx;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, rgba(20, 184, 166, 0) 70%);
-  bottom: -100rpx;
-  right: -150rpx;
-  animation: float 18s infinite ease-in-out reverse;
-}
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60rpx, 60rpx) scale(1.05); }
+@media (prefers-color-scheme: dark) {
+  page {
+    /* Dark Mode Variables */
+    --bg-body: #0f172a; /* slate-900 */
+    --bg-card: #1e293b; /* slate-800 */
+    --bg-card-glass: rgba(30, 41, 59, 0.65);
+    --border-card: #334155; /* slate-700 */
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc; /* slate-50 */
+    --text-sub: #94a3b8; /* slate-400 */
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* Universal Glass Card Layout */
 .glass-card {
   position: relative;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--bg-card-glass);
   backdrop-filter: blur(28px) saturate(120%);
   -webkit-backdrop-filter: blur(28px) saturate(120%);
   border-radius: 40rpx;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12rpx 32rpx rgba(148, 163, 184, 0.05);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-light);
   box-sizing: border-box;
 }
 

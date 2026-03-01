@@ -1,8 +1,5 @@
 <template>
   <view class="container">
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
-
     <ScoreHeader
       :semester-list="semesterList"
       :current-semester="currentSemester"
@@ -18,6 +15,7 @@
       class="score-list-container"
       :scores="sortedScores"
       :refreshing="refreshing"
+      :loading="loading"
       :get-score-class="getScoreClass"
       @refresh="onRefresh"
       @item-click="showDetail"
@@ -56,6 +54,7 @@ const {
   toggleSort,
   onRefresh,
   getScoreClass,
+  loading
 } = useScore(studentId, currentSemester);
 
 const onSemesterChange = (e) => {
@@ -64,6 +63,7 @@ const onSemesterChange = (e) => {
 };
 
 const showDetail = (item) => {
+  uni.vibrateShort({ type: 'light' });
   selectedScore.value = item;
 };
 

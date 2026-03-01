@@ -84,6 +84,7 @@ export function useDekt(studentIdRef) {
   };
 
   const showDetail = (item) => {
+    uni.vibrateShort({ type: 'light' });
     selectedItem.value = item;
     detailData.value = {};
     detailLoading.value = true;

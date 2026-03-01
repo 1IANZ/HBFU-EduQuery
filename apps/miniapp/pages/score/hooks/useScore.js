@@ -25,6 +25,7 @@ export function useScore(studentIdRef, currentSemesterRef) {
   });
   const sortOrder = ref("default");
   const refreshing = ref(false);
+  const loading = ref(false);
 
   const passCount = computed(() => {
     if (!scoreData.info) return 0;
@@ -67,7 +68,7 @@ export function useScore(studentIdRef, currentSemesterRef) {
         : currentSemesterRef.value.value;
 
     if (showLoading) {
-      uni.showLoading({ title: "加载成绩..." });
+      loading.value = true;
     }
 
     request({
@@ -87,7 +88,6 @@ export function useScore(studentIdRef, currentSemesterRef) {
             scoreData.summary.creditTotal = total;
           }
         } else {
-          if (showLoading) uni.hideLoading();
           uni.showToast({
             title: "获取成绩失败",
             icon: "none",
@@ -96,7 +96,7 @@ export function useScore(studentIdRef, currentSemesterRef) {
       },
       complete: () => {
         if (showLoading) {
-          uni.hideLoading();
+          loading.value = false;
         }
         if (refreshing.value) {
           refreshing.value = false;
@@ -143,5 +143,6 @@ export function useScore(studentIdRef, currentSemesterRef) {
     toggleSort,
     onRefresh,
     getScoreClass,
+    loading
   };
 }

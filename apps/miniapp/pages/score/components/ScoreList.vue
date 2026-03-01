@@ -3,11 +3,16 @@
     <scroll-view
       scroll-y
       class="score-list"
-      refresher-enabled
-      :refresher-triggered="refreshing"
-      @refresherrefresh="$emit('refresh')"
     >
-      <view class="inset-group-container" v-if="scores && scores.length > 0">
+      <!-- Skeleton UI -->
+      <view class="inset-group-container skeleton-container" v-if="loading && (!scores || scores.length === 0)">
+        <view class="skeleton-item" v-for="i in 10" :key="i">
+           <view class="skeleton-text skeleton-pulse"></view>
+           <view class="skeleton-badge skeleton-pulse"></view>
+        </view>
+      </view>
+
+      <view class="inset-group-container" v-else-if="scores && scores.length > 0">
         <view
           class="score-item active-scale"
           v-for="item in scores"
@@ -23,7 +28,7 @@
         </view>
       </view>
 
-      <view class="empty-state" v-if="!scores || scores.length === 0">
+      <view class="empty-state" v-else-if="!loading && (!scores || scores.length === 0)">
         <uni-icons type="info-filled" size="80" color="#cbd5e1" />
         <text class="empty-text">暂无成绩数据</text>
       </view>
@@ -45,6 +50,10 @@ defineProps({
     type: Function,
     required: true,
   },
+  loading: {
+    type: Boolean,
+    default: false
+  }
 });
 
 defineEmits(["refresh", "item-click"]);
@@ -155,5 +164,40 @@ $text-secondary: #64748b;
 .empty-text {
   font-size: 28rpx;
   color: $text-secondary;
+}
+
+/* Skeleton Loading */
+.skeleton-container {
+  padding: 0;
+}
+.skeleton-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 36rpx;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  &:last-child {
+    border-bottom: none;
+  }
+}
+.skeleton-pulse {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 400% 100%;
+  animation: pulse 1.5s ease-in-out infinite;
+  border-radius: 12rpx;
+}
+.skeleton-text {
+  height: 40rpx;
+  width: 60%;
+}
+.skeleton-badge {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 20rpx;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(0.98); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.9; }
 }
 </style>

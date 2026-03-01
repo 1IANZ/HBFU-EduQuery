@@ -1,35 +1,39 @@
 <template>
-  <view v-if="visible" class="popup-overlay" @click="$emit('close')">
-    <view class="popup-card" @click.stop>
-      <view class="popup-header">
-        <text class="popup-title">考试详情</text>
-        <view class="popup-close" @click="$emit('close')">
-          <uni-icons type="closeempty" size="22" color="#fff" />
-        </view>
-      </view>
+  <transition name="fade">
+    <view v-if="visible" class="popup-overlay" @click="$emit('close')">
+      <transition name="slide-up" appear>
+        <view class="popup-card" @click.stop v-if="visible">
+          <view class="popup-header">
+            <text class="popup-title">考试详情</text>
+            <view class="popup-close" @click="$emit('close')">
+              <uni-icons type="closeempty" size="22" color="#fff" />
+            </view>
+          </view>
 
-      <view class="popup-body">
-        <view class="detail-item">
-          <text class="detail-label">课程名称</text>
-          <text class="detail-value">{{ exam?.courseName }}</text>
+          <view class="popup-body">
+            <view class="detail-item">
+              <text class="detail-label">课程名称</text>
+              <text class="detail-value">{{ exam?.courseName }}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-label">课程代码</text>
+              <text class="detail-value">{{ exam?.courseCode }}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-label">考试时间</text>
+              <text class="detail-value">{{ exam?.examTime }}</text>
+            </view>
+            <view class="detail-item">
+              <text class="detail-label">考试地点</text>
+              <text class="detail-value highlight">
+                {{ exam?.examLocation }}
+              </text>
+            </view>
+          </view>
         </view>
-        <view class="detail-item">
-          <text class="detail-label">课程代码</text>
-          <text class="detail-value">{{ exam?.courseCode }}</text>
-        </view>
-        <view class="detail-item">
-          <text class="detail-label">考试时间</text>
-          <text class="detail-value">{{ exam?.examTime }}</text>
-        </view>
-        <view class="detail-item">
-          <text class="detail-label">考试地点</text>
-          <text class="detail-value highlight">
-            {{ exam?.examLocation }}
-          </text>
-        </view>
-      </view>
+      </transition>
     </view>
-  </view>
+  </transition>
 </template>
 
 <script setup>
@@ -141,5 +145,27 @@ $text-secondary: #64748b;
     color: $accent-color;
     font-weight: 600;
   }
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.slide-up-leave-active {
+  transition: transform 0.3s cubic-bezier(0.36, 0, 0.66, -0.56), opacity 0.3s ease;
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(40rpx) scale(0.95);
+  opacity: 0;
 }
 </style>

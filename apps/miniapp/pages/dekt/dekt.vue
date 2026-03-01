@@ -1,8 +1,5 @@
 <template>
   <view class="container">
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
-
     <DektList
       class="list-container"
       :groups="groups"

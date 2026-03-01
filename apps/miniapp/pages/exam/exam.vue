@@ -1,7 +1,5 @@
 <template>
   <view class="container">
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
     <ExamList
       :exam-list="examList"
       :refreshing="refreshing"
@@ -31,6 +29,7 @@ const { examList, refreshing, loadSemesters, onRefresh, getExamStatus } =
   useExam(studentId);
 
 const showDetail = (item) => {
+  uni.vibrateShort({ type: 'light' });
   selectedExam.value = item;
 };
 

@@ -1,26 +1,30 @@
 <template>
-  <view v-if="visible" class="popup-overlay" @click="$emit('close')">
-    <view class="popup-card" @click.stop>
-      <view class="popup-header">
-        <text class="popup-title">活动详情</text>
-        <view class="popup-close" @click="$emit('close')">
-          <uni-icons type="closeempty" size="22" color="#64748b" />
-        </view>
-      </view>
-
-      <view class="popup-body">
-        <view class="detail-row" v-if="loading">
-          <text class="loading-text">加载详情中...</text>
-        </view>
-        <block v-else>
-          <view class="detail-row" v-for="(val, key) in detailData" :key="key">
-            <text class="detail-label">{{ key }}</text>
-            <text class="detail-value">{{ val }}</text>
+  <transition name="fade">
+    <view v-if="visible" class="popup-overlay" @click="$emit('close')">
+      <transition name="slide-up" appear>
+        <view class="popup-card" @click.stop v-if="visible">
+          <view class="popup-header">
+            <text class="popup-title">活动详情</text>
+            <view class="popup-close" @click="$emit('close')">
+              <uni-icons type="closeempty" size="22" color="#64748b" />
+            </view>
           </view>
-        </block>
-      </view>
+
+          <view class="popup-body">
+            <view class="detail-row" v-if="loading">
+              <text class="loading-text">加载详情中...</text>
+            </view>
+            <block v-else>
+              <view class="detail-row" v-for="(val, key) in detailData" :key="key">
+                <text class="detail-label">{{ key }}</text>
+                <text class="detail-value">{{ val }}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </transition>
     </view>
-  </view>
+  </transition>
 </template>
 
 <script setup>
@@ -65,18 +69,6 @@ $text-sub: #64748b;
   background: #fff;
   border-radius: 24rpx;
   overflow: hidden;
-  animation: popupScan 0.2s ease-out;
-}
-
-@keyframes popupScan {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 .popup-header {
@@ -128,5 +120,27 @@ $text-sub: #64748b;
   text-align: center;
   color: $text-sub;
   display: block;
+}
+
+/* Animations */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.slide-up-leave-active {
+  transition: transform 0.3s cubic-bezier(0.36, 0, 0.66, -0.56), opacity 0.3s ease;
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(40rpx) scale(0.95);
+  opacity: 0;
 }
 </style>

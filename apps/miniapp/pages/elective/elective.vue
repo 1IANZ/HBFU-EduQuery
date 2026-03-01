@@ -1,8 +1,5 @@
 <template>
   <view class="container">
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
-
     <ElectiveHeader
       :semester-list="semesterList"
       :current-semester="currentSemester"
@@ -65,6 +62,7 @@ const onSemesterChange = (e) => {
 };
 
 const showDetail = (item) => {
+  uni.vibrateShort({ type: 'light' });
   selectedCourse.value = item;
 };
 

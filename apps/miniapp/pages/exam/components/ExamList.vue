@@ -3,9 +3,6 @@
     <scroll-view
       scroll-y
       class="exam-list"
-      refresher-enabled
-      :refresher-triggered="refreshing"
-      @refresherrefresh="$emit('refresh')"
     >
       <view class="inset-group-container" v-if="examList && examList.length > 0">
         <view

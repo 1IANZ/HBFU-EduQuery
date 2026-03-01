@@ -1,13 +1,10 @@
 <template>
   <view class="profile-container">
-    <!-- Atmosphere Blobs -->
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
 
     <!-- Hero Header -->
     <view class="profile-hero">
       <view class="avatar-wrapper">
-        <uni-icons type="person-filled" size="60" color="#fff" />
+        <text class="avatar-text">{{ (userInfo.name || '刘').charAt(0) }}</text>
       </view>
       <text class="hero-name">{{ userInfo.name || '姓名' }}</text>
       <view class="hero-badges">
@@ -91,6 +88,18 @@
         </view>
       </view>
 
+      <!-- Group 3: Danger Zone -->
+      <view class="group-title">账户操作</view>
+      <view class="inset-group">
+        <view class="setting-item action-scale" @click="handleLogout">
+          <view class="item-left">
+            <view class="icon-box red-bg"><uni-icons type="redo" size="18" color="#ef4444" /></view>
+            <text class="item-label text-red">退出登录</text>
+          </view>
+          <uni-icons type="right" size="16" color="#cbd5e1" />
+        </view>
+      </view>
+
     </view>
     <view style="height: 100rpx"></view>
   </view>
@@ -118,6 +127,26 @@ const maskedIdNumber = computed(() => {
 
 const toggleIdVisibility = () => {
   showIdNumber.value = !showIdNumber.value;
+};
+
+const handleLogout = () => {
+  uni.showModal({
+    title: "提示",
+    content: "确定要退出登录吗？",
+    success: (res) => {
+      if (res.confirm) {
+        uni.setStorageSync("logout_flag", true);
+        uni.removeStorageSync("user_creds");
+        uni.removeStorageSync("userInfo");
+        uni.removeStorageSync("userCookies");
+        // We might not have clearConfigCache imported, so we just clear everything safely
+        uni.clearStorageSync();
+        uni.reLaunch({
+          url: "/pages/login/login",
+        });
+      }
+    },
+  });
 };
 
 const copyText = (text, label) => {
@@ -163,21 +192,26 @@ onMounted(() => {
   width: 180rpx;
   height: 180rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background-color: var(--bg-body);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 16rpx 32rpx rgba(59, 130, 246, 0.25);
-  border: 4px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-light);
+  border: 4px solid var(--bg-card);
   margin-bottom: 24rpx;
+}
+
+.avatar-text {
+  font-size: 80rpx;
+  font-weight: 700;
+  color: var(--text-sub);
 }
 
 .hero-name {
   font-size: 48rpx;
   font-weight: 800;
-  color: #1e293b;
+  color: var(--text-main);
   margin-bottom: 16rpx;
-  text-shadow: 0 2rpx 10rpx rgba(255, 255, 255, 0.8);
 }
 
 .hero-badges {
@@ -223,12 +257,12 @@ onMounted(() => {
 }
 
 .inset-group {
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--bg-card-glass);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-radius: 32rpx;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-light);
   overflow: hidden;
 }
 
@@ -237,7 +271,7 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 32rpx 32rpx;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-card);
   transition: background 0.2s;
 
   &:last-child {
@@ -245,7 +279,7 @@ onMounted(() => {
   }
 
   &:active {
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--bg-card);
   }
 }
 
@@ -274,7 +308,7 @@ onMounted(() => {
 .item-label {
   font-size: 30rpx;
   font-weight: 600;
-  color: #334155;
+  color: var(--text-main);
 }
 
 .item-right {
@@ -285,7 +319,7 @@ onMounted(() => {
 
 .item-value {
   font-size: 28rpx;
-  color: #64748b;
+  color: var(--text-sub);
   font-weight: 500;
 }
 
@@ -302,6 +336,6 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(241, 245, 249, 0.8);
+  background: var(--bg-body);
 }
 </style>

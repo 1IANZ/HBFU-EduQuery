@@ -32,7 +32,11 @@
           :key="day.value"
         >
           <view
-            v-if="getCourse(day.value, section.id, currentWeek)"
+            v-if="loading"
+            class="course-card skeleton-pulse"
+          ></view>
+          <view
+            v-else-if="getCourse(day.value, section.id, currentWeek)"
             class="course-card active-scale"
             :style="{
               backgroundColor: getCourseColor(
@@ -87,6 +91,10 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  loading: {
+    type: Boolean,
+    default: false
+  }
 });
 
 defineEmits(["course-click"]);
@@ -337,5 +345,23 @@ $text-secondary: #64748b;
   -webkit-box-orient: vertical;
   overflow: hidden;
   word-break: break-all;
+}
+
+/* Skeleton Effect for Course Grid */
+.skeleton-pulse {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 400% 100%;
+  animation: pulse 1.5s ease-in-out infinite;
+  border-radius: 20rpx;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  border: none;
+  backdrop-filter: none;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(0.98); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.9; }
 }
 </style>

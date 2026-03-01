@@ -1,7 +1,5 @@
 <template>
   <view class="container">
-    <view class="blob blob-1"></view>
-    <view class="blob blob-2"></view>
     <CourseHeader
       :semester-list="semesterList"
       :current-semester="currentSemester"
@@ -18,6 +16,7 @@
       :actual-week="actualWeek || currentWeek" 
       :get-course="getCourse"
       :get-course-color="getCourseColor"
+      :loading="loading"
       @course-click="showCourseDetail"
     />
     <CourseDetailPopup
@@ -90,7 +89,7 @@ const weekDays = [
 
 const { semesterList, currentSemester, loadSemesters } = useSemester(studentId);
 
-const { loadCourses, getCourse, getCourseColor } = useCourseTable(
+const { loadCourses, getCourse, getCourseColor, loading } = useCourseTable(
   studentId,
   currentSemester,
 );
@@ -102,6 +101,7 @@ const onSemesterChange = (index) => {
 };
 
 const showCourseDetail = (course) => {
+  uni.vibrateShort({ type: 'light' });
   selectedCourse.value = course;
   showDetail.value = true;
 };

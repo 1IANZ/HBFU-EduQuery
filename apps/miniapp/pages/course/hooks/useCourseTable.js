@@ -5,6 +5,7 @@ import { request } from "@/utils/request.js";
 
 export function useCourseTable(studentIdRef, currentSemesterRef) {
   const courseList = ref([]);
+  const loading = ref(false);
 
   const colorPalette = [
     "#3b82f6",
@@ -22,7 +23,7 @@ export function useCourseTable(studentIdRef, currentSemesterRef) {
   const loadCourses = () => {
     if (!studentIdRef.value || !currentSemesterRef.value) return;
 
-    uni.showLoading({ title: "加载课程..." });
+    loading.value = true;
 
     request({
       url: API.user.course(studentIdRef.value, currentSemesterRef.value.value),
@@ -45,7 +46,7 @@ export function useCourseTable(studentIdRef, currentSemesterRef) {
         uni.showToast({ title: "网络请求失败", icon: "none" });
       },
       complete: () => {
-        uni.hideLoading();
+        loading.value = false;
       },
     });
   };
@@ -69,5 +70,6 @@ export function useCourseTable(studentIdRef, currentSemesterRef) {
     loadCourses,
     getCourse,
     getCourseColor,
+    loading
   };
 }
