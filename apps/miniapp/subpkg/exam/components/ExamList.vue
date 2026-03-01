@@ -9,7 +9,7 @@
           class="exam-item active-scale"
           v-for="item in examList"
           :key="item.id"
-          @click="$emit('item-click', item)"
+          @click="$emit('itemClick', item)"
         >
           <view class="card-header">
             <text class="course-name">{{ item.courseName }}</text>
@@ -61,7 +61,7 @@ defineProps({
   },
 });
 
-defineEmits(["refresh", "item-click"]);
+defineEmits(["refresh", "itemClick"]);
 </script>
 
 <style lang="scss" scoped>
@@ -88,18 +88,16 @@ $text-secondary: #64748b;
 
 /* Inset Group Container */
 .inset-group-container {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 36rpx;
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  box-shadow: var(--shadow-light);
   overflow: hidden;
   margin-bottom: 40rpx;
 }
 
 .exam-item {
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-card);
   padding: 32rpx 36rpx;
   position: relative;
   z-index: 10;
@@ -135,7 +133,7 @@ $text-secondary: #64748b;
 
   &.status-upcoming {
     background: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    color: var(--accent-color);
   }
 
   &.status-ongoing {
@@ -144,12 +142,12 @@ $text-secondary: #64748b;
   }
 
   &.status-finished {
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--bg-card);
+    color: var(--text-sub);
   }
 
   &.status-unknown {
-    background: #f1f5f9;
+    background: var(--bg-card);
     color: #94a3b8;
   }
 }
@@ -168,13 +166,13 @@ $text-secondary: #64748b;
 
 .info-label {
   font-size: 26rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   flex-shrink: 0;
 }
 
 .info-value {
   font-size: 26rpx;
-  color: $text-primary;
+  color: var(--text-main);
   flex: 1;
 }
 

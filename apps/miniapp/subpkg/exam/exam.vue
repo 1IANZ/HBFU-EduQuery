@@ -1,11 +1,12 @@
 <template>
   <view class="container">
+    <CustomNavBar title="考试安排" :show-back="true" />
     <ExamList
-      :exam-list="examList"
+      :examList="examList"
       :refreshing="refreshing"
-      :get-exam-status="getExamStatus"
+      :getExamStatus="getExamStatus"
       @refresh="onRefresh"
-      @item-click="showDetail"
+      @itemClick="showDetail"
     />
 
     <ExamDetailPopup

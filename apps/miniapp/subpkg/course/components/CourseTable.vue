@@ -45,7 +45,7 @@
             }"
             @click="
               $emit(
-                'course-click',
+                'courseClick',
                 getCourse(day.value, section.id, currentWeek),
               )
             "
@@ -97,7 +97,7 @@ const props = defineProps({
   }
 });
 
-defineEmits(["course-click"]);
+defineEmits(["courseClick"]);
 
 // 获取今天是星期几
 const getTodayDayName = () => {
@@ -130,13 +130,12 @@ $text-secondary: #64748b;
 
 /* Glass Card - Modern Dashboard Style */
 .glass-card {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 36rpx;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12rpx 32rpx rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-light);
   position: relative;
   z-index: 10;
   display: flex;
@@ -149,8 +148,8 @@ $text-secondary: #64748b;
 /* Table Header */
 .table-header {
   display: flex;
-  background: rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  background: var(--bg-body);
+  border-bottom: 1px solid var(--border-card);
   flex-shrink: 0;
   padding: 12rpx 0; /* Reduced vertical padding inside table header */
 }
@@ -192,7 +191,7 @@ $text-secondary: #64748b;
 }
 
 .header-text {
-  color: #64748b;
+  color: var(--text-sub);
   font-size: 24rpx;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -215,7 +214,7 @@ $text-secondary: #64748b;
   border-radius: 20rpx;
   box-shadow: 0 4rpx 10rpx rgba(239, 68, 68, 0.3);
   z-index: 10;
-  border: 1px solid rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 /* Table Body */
@@ -227,10 +226,9 @@ $text-secondary: #64748b;
 }
 
 .table-row {
-  flex: 1;
+  height: 160rpx;
   display: flex;
-  min-height: 150rpx;
-  border-bottom: 1px dashed rgba(148, 163, 184, 0.2);
+  border-bottom: 1px dashed var(--border-card);
 
   &:last-child {
     border-bottom: none;
@@ -251,7 +249,7 @@ $text-secondary: #64748b;
 
 .time-name {
   font-size: 22rpx;
-  color: #94a3b8;
+  color: var(--text-sub);
   font-weight: 600;
   text-align: center;
   margin-bottom: 2rpx;
@@ -259,7 +257,8 @@ $text-secondary: #64748b;
 
 .time-range {
   font-size: 16rpx;
-  color: #cbd5e1;
+  color: var(--text-sub);
+  opacity: 0.6;
   text-align: center;
 }
 
@@ -298,15 +297,15 @@ $text-secondary: #64748b;
   z-index: 5;
   
   /* Upgraded 3D Glass Pill Effect */
-  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12), inset 0 2rpx 0 rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: saturate(150%) blur(10px);
 
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease-out;
 
   &.active-scale:active {
     transform: scale(0.92);
@@ -349,7 +348,7 @@ $text-secondary: #64748b;
 
 /* Skeleton Effect for Course Grid */
 .skeleton-pulse {
-  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background: linear-gradient(90deg, var(--bg-body) 25%, var(--bg-card) 50%, var(--bg-body) 75%);
   background-size: 400% 100%;
   animation: pulse 1.5s ease-in-out infinite;
   border-radius: 20rpx;

@@ -31,7 +31,7 @@
 defineProps({
   visible: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   detailData: {
     type: Object,
@@ -65,10 +65,15 @@ $text-sub: #64748b;
 }
 
 .popup-card {
-  width: 85%;
-  background: #fff;
-  border-radius: 24rpx;
+  width: 640rpx;
+  max-width: 92vw;
+  max-height: 78vh;
+  background: var(--bg-card);
+  border-radius: 32rpx;
   overflow: hidden;
+  box-shadow: 0 24rpx 64rpx rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
 }
 
 .popup-header {
@@ -86,39 +91,42 @@ $text-sub: #64748b;
 }
 
 .popup-body {
-  padding: 32rpx;
-  max-height: 60vh;
+  flex: 1;
+  min-height: 0;
+  padding: 40rpx 40rpx 20rpx;
   overflow-y: auto;
 }
 
 .detail-row {
-  margin-bottom: 24rpx;
-  border-bottom: 1px dashed #e2e8f0;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 24rpx;
+  margin-bottom: 24rpx;
+  border-bottom: 1px solid var(--border-card);
 
   &:last-child {
     border-bottom: none;
-    margin-bottom: 0;
+    margin-bottom: 20rpx;
   }
 }
 
 .detail-label {
-  display: block;
-  font-size: 24rpx;
-  color: $text-sub;
-  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  color: var(--text-sub);
+  margin-bottom: 12rpx;
 }
 
 .detail-value {
-  display: block;
-  font-size: 28rpx;
-  color: $text-main;
+  font-size: 32rpx;
+  color: var(--text-main);
+  font-weight: 600;
   line-height: 1.5;
+  word-break: break-all;
 }
 
 .loading-text {
   text-align: center;
-  color: $text-sub;
+  color: var(--text-sub);
   display: block;
 }
 

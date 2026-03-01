@@ -18,11 +18,11 @@
 
     <!-- 周切换 -->
     <view class="week-nav">
-      <view class="nav-btn active-scale" @click="$emit('prev-week')">
+      <view class="nav-btn active-scale" @click="$emit('prevWeek')">
         <uni-icons type="left" size="18" color="#3b82f6" />
       </view>
       <text class="week-text">第 {{ currentWeek }} 周</text>
-      <view class="nav-btn active-scale" @click="$emit('next-week')">
+      <view class="nav-btn active-scale" @click="$emit('nextWeek')">
         <uni-icons type="right" size="18" color="#3b82f6" />
       </view>
     </view>
@@ -52,10 +52,10 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(["semester-change", "prev-week", "next-week"]);
+const emit = defineEmits(["semesterChange", "prevWeek", "nextWeek"]);
 
 const onSemesterChange = (e) => {
-  emit("semester-change", e.detail.value);
+  emit("semesterChange", e.detail.value);
 };
 </script>
 
@@ -69,15 +69,15 @@ $text-secondary: #64748b;
   align-items: center;
   justify-content: space-between;
   padding: 20rpx 32rpx; /* Reduced vertical padding */
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 36rpx;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-card);
   margin-bottom: 8rpx; /* Significantly reduced to bring table closer */
   position: relative;
   z-index: 10;
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.06);
+  box-shadow: var(--shadow-light);
 }
 
 .semester-picker {
@@ -122,7 +122,7 @@ $text-secondary: #64748b;
 
 .week-text {
   font-size: 28rpx;
-  color: $text-primary;
+  color: var(--text-main);
   font-weight: 600;
   min-width: 100rpx;
   text-align: center;
@@ -130,8 +130,8 @@ $text-secondary: #64748b;
 
 .season-tag {
   font-size: 20rpx;
-  color: #fff;
-  background: $accent-color;
+  color: var(--bg-card);
+  background: var(--accent-color);
   padding: 6rpx 12rpx;
   border-radius: 10rpx;
 }

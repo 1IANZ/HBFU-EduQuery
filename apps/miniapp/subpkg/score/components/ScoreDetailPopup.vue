@@ -67,7 +67,7 @@
 defineProps({
   visible: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   score: {
     type: Object,

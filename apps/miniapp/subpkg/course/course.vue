@@ -1,23 +1,24 @@
 <template>
   <view class="container">
+    <CustomNavBar title="课程安排" :show-back="true" />
     <CourseHeader
-      :semester-list="semesterList"
-      :current-semester="currentSemester"
-      :current-week="currentWeek"
-      :season-label="seasonLabel"
-      @semester-change="onSemesterChange"
-      @prev-week="prevWeek"
-      @next-week="nextWeek"
+      :semesterList="semesterList"
+      :currentSemester="currentSemester"
+      :currentWeek="currentWeek"
+      :seasonLabel="seasonLabel"
+      @semesterChange="onSemesterChange"
+      @prevWeek="prevWeek"
+      @nextWeek="nextWeek"
     />
     <CourseTable
-      :week-days="weekDays"
+      :weekDays="weekDays"
       :sections="sections"
-      :current-week="currentWeek"
-      :actual-week="actualWeek || currentWeek" 
-      :get-course="getCourse"
-      :get-course-color="getCourseColor"
+      :currentWeek="currentWeek"
+      :actualWeek="actualWeek || currentWeek" 
+      :getCourse="getCourse"
+      :getCourseColor="getCourseColor"
       :loading="loading"
-      @course-click="showCourseDetail"
+      @courseClick="showCourseDetail"
     />
     <CourseDetailPopup
       :visible="showDetail"

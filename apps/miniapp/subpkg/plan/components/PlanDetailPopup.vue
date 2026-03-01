@@ -6,7 +6,7 @@
           <view class="popup-header">
             <text class="popup-title">课程详情</text>
             <view class="popup-close" @click="$emit('close')">
-              <uni-icons type="closeempty" size="22" color="#fff" />
+              <uni-icons type="closeempty" size="22" color="var(--text-main)" />
             </view>
           </view>
 
@@ -58,7 +58,7 @@
 defineProps({
   visible: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   course: {
     type: Object,
@@ -85,12 +85,15 @@ $text-secondary: #64748b;
 }
 
 .popup-card {
-  width: 85%;
-  max-height: 75vh;
-  background: #fff;
+  width: 640rpx;
+  max-width: 92vw;
+  max-height: 78vh;
+  background: var(--bg-card);
   border-radius: 32rpx;
   overflow: hidden;
-  box-shadow: 0 20rpx 50rpx rgba(0, 0, 0, 0.15);
+  box-shadow: 0 24rpx 64rpx rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
 }
 
 .popup-header {
@@ -103,7 +106,7 @@ $text-secondary: #64748b;
 
 .popup-title {
   font-size: 34rpx;
-  color: #fff;
+  color: var(--text-main);
   font-weight: 700;
 }
 
@@ -122,43 +125,40 @@ $text-secondary: #64748b;
 }
 
 .popup-body {
-  padding: 32rpx;
-  max-height: 55vh;
+  flex: 1;
+  min-height: 0;
+  padding: 40rpx 40rpx 20rpx;
   overflow-y: auto;
 }
 
 .detail-item {
-  margin-bottom: 28rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24rpx;
+  margin-bottom: 24rpx;
+  border-bottom: 1px solid var(--border-card);
 
   &:last-child {
-    margin-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 20rpx;
   }
 }
 
 .detail-label {
-  display: block;
-  font-size: 24rpx;
-  color: $text-secondary;
-  margin-bottom: 8rpx;
+  font-size: 26rpx;
+  color: var(--text-sub);
+  margin-bottom: 12rpx;
 }
 
 .detail-value {
-  display: block;
-  font-size: 30rpx;
-  color: $text-primary;
-  font-weight: 500;
-  background: #f8fafc;
-  padding: 16rpx 20rpx;
-  border-radius: 16rpx;
+  font-size: 32rpx;
+  color: var(--text-main);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-all;
 
   &.highlight {
-    background: linear-gradient(
-      135deg,
-      rgba(59, 130, 246, 0.1) 0%,
-      rgba(59, 130, 246, 0.05) 100%
-    );
     color: $accent-color;
-    font-weight: 600;
   }
 }
 

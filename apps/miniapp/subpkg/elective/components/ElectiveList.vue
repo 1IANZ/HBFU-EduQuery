@@ -10,7 +10,7 @@
             v-for="item in courses"
             :key="item.courseId"
             class="course-item active-scale"
-            @click="$emit('item-click', item)"
+            @click="$emit('itemClick', item)"
           >
             <view class="course-header">
               <text class="course-name">{{ item.courseName }}</text>
@@ -41,7 +41,7 @@ defineProps({
   },
 });
 
-defineEmits(["refresh", "item-click"]);
+defineEmits(["refresh", "itemClick"]);
 </script>
 
 <style lang="scss" scoped>
@@ -67,12 +67,10 @@ $text-secondary: #64748b;
 
 /* Inset Group Container */
 .inset-group-container {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 36rpx;
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  box-shadow: var(--shadow-light);
   overflow: hidden;
   margin-bottom: 40rpx;
 }
@@ -80,7 +78,7 @@ $text-secondary: #64748b;
 .course-item {
   position: relative;
   z-index: 10;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-card);
   padding: 32rpx 36rpx;
   transition: background 0.2s;
   
@@ -97,19 +95,19 @@ $text-secondary: #64748b;
 
 .course-name {
   flex: 1;
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 600;
-  color: $text-primary;
+  color: var(--text-main);
   line-height: 1.4;
-  padding-right: 16rpx;
+  margin-right: 24rpx;
 }
 
 .course-credits {
   padding: 6rpx 16rpx;
-  background: #f1f5f9;
+  background: var(--bg-body);
   border-radius: 8rpx;
   font-size: 22rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   flex-shrink: 0;
 }
 

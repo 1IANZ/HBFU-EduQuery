@@ -1,9 +1,10 @@
 <template>
   <view class="container">
+    <CustomNavBar title="执行计划" :show-back="true" />
     <PlanHeader
-      :semester-list="semesterList"
-      :current-semester="currentSemester"
-      @semester-change="onSemesterChange"
+      :semesterList="semesterList"
+      :currentSemester="currentSemester"
+      @semesterChange="onSemesterChange"
     />
 
     <PlanList
@@ -11,7 +12,7 @@
       :plans="filteredPlans"
       :refreshing="refreshing"
       @refresh="onRefresh"
-      @item-click="showDetail"
+      @itemClick="showDetail"
     />
 
     <PlanDetailPopup

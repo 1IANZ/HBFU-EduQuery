@@ -1,14 +1,15 @@
 <template>
   <view class="container">
+    <CustomNavBar title="成绩查询" :show-back="true" />
     <ScoreHeader
-      :semester-list="semesterList"
-      :current-semester="currentSemester"
-      :sort-order="sortOrder"
+      :semesterList="semesterList"
+      :currentSemester="currentSemester"
+      :sortOrder="sortOrder"
       :summary="scoreData.summary"
-      :pass-count="passCount"
-      :fail-count="failCount"
-      @semester-change="onSemesterChange"
-      @toggle-sort="toggleSort"
+      :passCount="passCount"
+      :failCount="failCount"
+      @semesterChange="onSemesterChange"
+      @toggleSort="toggleSort"
     />
 
     <ScoreList
@@ -16,15 +17,15 @@
       :scores="sortedScores"
       :refreshing="refreshing"
       :loading="loading"
-      :get-score-class="getScoreClass"
+      :getScoreClass="getScoreClass"
       @refresh="onRefresh"
-      @item-click="showDetail"
+      @itemClick="showDetail"
     />
 
     <ScoreDetailPopup
       :visible="!!selectedScore"
       :score="selectedScore"
-      :get-score-class="getScoreClass"
+      :getScoreClass="getScoreClass"
       @close="closeDetail"
     />
   </view>

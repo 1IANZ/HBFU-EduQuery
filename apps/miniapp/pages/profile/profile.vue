@@ -1,5 +1,6 @@
-<template>
+  <template>
   <view class="profile-container">
+    <CustomNavBar title="个人信息" :show-back="true" />
 
     <!-- Hero Header -->
     <view class="profile-hero">
@@ -174,7 +175,6 @@ onMounted(() => {
 .profile-container {
   min-height: 100vh;
   padding: 0 32rpx;
-  padding-top: calc(100rpx + var(--status-bar-height));
   position: relative;
   z-index: 10;
   box-sizing: border-box;

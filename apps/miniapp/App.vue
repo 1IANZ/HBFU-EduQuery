@@ -56,6 +56,7 @@ page {
   --border-glass: rgba(255, 255, 255, 0.9);
   --text-main: #1e293b;
   --text-sub: #64748b;
+  --accent-color: #3b82f6;
   --shadow-light: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
   background-color: var(--bg-body);
@@ -65,15 +66,16 @@ page {
 
 @media (prefers-color-scheme: dark) {
   page {
-    /* Dark Mode Variables */
-    --bg-body: #0f172a; /* slate-900 */
-    --bg-card: #1e293b; /* slate-800 */
-    --bg-card-glass: rgba(30, 41, 59, 0.65);
-    --border-card: #334155; /* slate-700 */
-    --border-glass: rgba(255, 255, 255, 0.1);
-    --text-main: #f8fafc; /* slate-50 */
-    --text-sub: #94a3b8; /* slate-400 */
-    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    /* Dark Mode Variables — warm neutral grey, easy on eyes */
+    --bg-body: #181818;
+    --bg-card: #242424;
+    --bg-card-glass: rgba(36, 36, 36, 0.80);
+    --border-card: #333333;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --text-main: #f0f0f0;
+    --text-sub: #909090;
+    --accent-color: #3b82f6;
+    --shadow-light: 0 4px 16px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -92,11 +94,11 @@ page {
 
 /* Click Animation - active-scale */
 .active-scale {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
+  transition: transform 0.15s ease-out, filter 0.15s ease-out;
 }
 .active-scale:active {
-  transform: scale(0.94);
-  filter: brightness(0.95);
+  transform: scale(0.96);
+  filter: brightness(0.97);
 }
 
 /* Emotional Empty States (Global) */

@@ -5,7 +5,7 @@
         mode="selector"
         :range="semesterList"
         range-key="key"
-        @change="$emit('semester-change', $event)"
+        @change="$emit('semesterChange', $event)"
         class="semester-picker"
       >
         <view class="picker-box">
@@ -16,7 +16,7 @@
         </view>
       </picker>
 
-      <view class="sort-btn active-scale" @click="$emit('toggle-sort')">
+      <view class="sort-btn active-scale" @click="$emit('toggleSort')">
         <uni-icons
           :type="
             sortOrder === 'desc'
@@ -87,7 +87,7 @@ defineProps({
   },
 });
 
-defineEmits(["semester-change", "toggle-sort"]);
+defineEmits(["semesterChange", "toggleSort"]);
 </script>
 
 <style lang="scss" scoped>
@@ -95,16 +95,16 @@ $accent-color: #3b82f6;
 $text-secondary: #64748b;
 
 .header-section {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-card);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-card);
   border-radius: 36rpx;
   padding: 32rpx;
   margin-bottom: 24rpx;
   position: relative;
   z-index: 10;
-  box-shadow: 0 12rpx 32rpx rgba(148, 163, 184, 0.06);
+  box-shadow: var(--shadow-light);
 }
 
 .header-row {
@@ -129,7 +129,7 @@ $text-secondary: #64748b;
 }
 
 .picker-text {
-  color: $accent-color;
+  color: var(--accent-color);
   font-size: 28rpx;
   font-weight: 500;
 }
@@ -148,7 +148,7 @@ $text-secondary: #64748b;
 }
 
 .sort-text {
-  color: $accent-color;
+  color: var(--accent-color);
   font-size: 26rpx;
   font-weight: 500;
 }
@@ -190,7 +190,7 @@ $text-secondary: #64748b;
 .pass-fail-label,
 .stat-label {
   font-size: 24rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   margin-bottom: 8rpx;
   display: block;
 }
@@ -211,6 +211,6 @@ $text-secondary: #64748b;
 .stat-value {
   font-size: 36rpx;
   font-weight: 700;
-  color: $accent-color;
+  color: var(--accent-color);
 }
 </style>

@@ -10,7 +10,7 @@
           v-for="(group, gIndex) in groups"
           :key="gIndex"
         >
-          <view class="group-header" @click="$emit('toggle-group', gIndex)">
+          <view class="group-header" @click="$emit('toggleGroup', gIndex)">
             <view class="header-left">
               <view class="header-indicator"></view>
               <text class="group-title">{{ group.category }}</text>
@@ -30,7 +30,7 @@
               class="dekt-item active-scale"
               v-for="(item, iIndex) in group.items"
               :key="item.id"
-              @click="$emit('item-click', item)"
+              @click="$emit('itemClick', item)"
             >
               <view class="card-left">
                 <text class="activity-name">{{
@@ -80,7 +80,7 @@ defineProps({
   },
 });
 
-defineEmits(["refresh", "toggle-group", "item-click"]);
+defineEmits(["refresh", "toggleGroup", "itemClick"]);
 </script>
 
 <style lang="scss" scoped>
@@ -108,12 +108,10 @@ $text-sub: #64748b;
 
 /* Group Section acts as Inset Container */
 .group-section {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 36rpx;
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  box-shadow: var(--shadow-light);
   overflow: hidden;
   margin-bottom: 32rpx;
 }
@@ -126,7 +124,7 @@ $text-sub: #64748b;
   background: transparent;
 
   &:active {
-    background: rgba(255, 255, 255, 0.4);
+    background: var(--bg-body);
   }
 }
 
@@ -146,7 +144,7 @@ $text-sub: #64748b;
 .group-title {
   font-size: 30rpx;
   font-weight: 600;
-  color: $text-main;
+  color: var(--text-main);
 }
 
 .header-right {
@@ -162,8 +160,8 @@ $text-sub: #64748b;
 }
 
 .group-body {
-  border-top: 1px solid rgba(226, 232, 240, 0.6);
-  background: rgba(255, 255, 255, 0.3);
+  border-top: 1px solid var(--border-card);
+  background: transparent;
 }
 
 .dekt-item {
@@ -171,7 +169,7 @@ $text-sub: #64748b;
   justify-content: space-between;
   align-items: center;
   padding: 32rpx;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-card);
   position: relative;
   z-index: 10;
   transition: background 0.2s;
@@ -189,7 +187,7 @@ $text-sub: #64748b;
 .activity-name {
   font-size: 28rpx;
   font-weight: 500;
-  color: $text-main;
+  color: var(--text-main);
   margin-bottom: 8rpx;
   display: block;
   line-height: 1.4;
@@ -202,8 +200,8 @@ $text-sub: #64748b;
 
 .meta-tag {
   font-size: 20rpx;
-  color: $text-sub;
-  background: #f1f5f9;
+  color: var(--text-sub);
+  background: var(--bg-body);
   padding: 2rpx 10rpx;
   border-radius: 6rpx;
 }
@@ -213,7 +211,7 @@ $text-sub: #64748b;
 }
 
 .credit-badge {
-  background: #eff6ff;
+  background: rgba(59, 130, 246, 0.1);
   color: $primary-color;
   padding: 6rpx 16rpx;
   border-radius: 10rpx;
@@ -224,7 +222,7 @@ $text-sub: #64748b;
 .empty-group {
   text-align: center;
   padding: 20rpx;
-  color: $text-sub;
+  color: var(--text-sub);
   font-size: 24rpx;
 }
 

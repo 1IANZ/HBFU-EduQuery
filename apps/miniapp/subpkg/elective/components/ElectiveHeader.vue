@@ -4,7 +4,7 @@
       mode="selector"
       :range="semesterList"
       range-key="key"
-      @change="$emit('semester-change', $event)"
+      @change="$emit('semesterChange', $event)"
       class="semester-picker"
     >
       <view class="picker-box">
@@ -21,7 +21,7 @@
 defineProps({
   semesterList: {
     type: Array,
-    default: () => [],
+    required: true,
   },
   currentSemester: {
     type: Object,
@@ -29,20 +29,23 @@ defineProps({
   },
 });
 
-defineEmits(["semester-change"]);
+defineEmits(["semesterChange"]);
 </script>
 
 <style lang="scss" scoped>
 $accent-color: #3b82f6;
 
 .header-section {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 20rpx;
-  padding: 16rpx;
-  margin-bottom: 10rpx;
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 36rpx;
+  padding: 24rpx 32rpx;
+  margin-bottom: 24rpx;
   position: relative;
-  z-index: 1;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+  z-index: 10;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-card);
 }
 
 .semester-picker {
@@ -59,7 +62,7 @@ $accent-color: #3b82f6;
 }
 
 .picker-text {
-  color: $accent-color;
+  color: var(--accent-color);
   font-size: 28rpx;
   font-weight: 500;
 }

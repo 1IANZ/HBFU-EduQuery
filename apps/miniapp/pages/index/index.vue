@@ -3,8 +3,11 @@
     <!-- Main Scroll Container -->
     <view class="scroll-container">
       
-      <!-- 1. Header (Sticky) -->
-      <view class="v7-header sticky-header">
+      <!-- 1. Custom Navigation Bar -->
+      <CustomNavBar title="河金小助手" />
+
+      <!-- 1. Header (Greeting Section) -->
+      <view class="v7-header greeting-section">
         <view class="header-user">
           <text class="greeting">Hi, {{ studentName || "刘芳年" }}</text>
           <text class="user-id">ID: {{ studentId || "20241216041022" }}</text>
@@ -112,11 +115,7 @@
           </view>
           <view class="notice-content">
             <text class="notice-main-text">{{ displayedNotices[0] || "有问题请及时反馈给管理员" }}</text>
-            <view class="notice-sub-info">
-              <text class="notice-author">微信号:</text>
-              <text class="notice-badge">Ez4Nian</text>
-              <text class="notice-author">· Alex</text>
-            </view>
+            <text class="notice-contact">有问题请联系 · 微信号: Ez4Nian</text>
             <text class="notice-count" v-if="messages.length > 1">还有 {{messages.length - 1}} 条通知</text>
           </view>
         </view>
@@ -217,17 +216,13 @@ onBackPress(() => true);
   box-sizing: border-box;
 }
 
-/* 1. Header */
-.sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: var(--bg-card);
-  padding: calc(48rpx + var(--status-bar-height, 0px)) 32rpx 16rpx 32rpx;
+/* 1. Greeting Section (Below NavBar) */
+.greeting-section {
+  background-color: transparent;
+  padding: 40rpx 32rpx 16rpx 32rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow-light); /* Tailwind shadow-sm */
 }
 
 .header-user {
@@ -271,14 +266,14 @@ onBackPress(() => true);
   width: 96rpx;
   height: 96rpx;
   border-radius: 50%;
-  border: 4rpx solid #e0e7ff; /* indigo-100 */
+  border: 4rpx solid var(--border-card);
   overflow: hidden;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .avatar-icon-bg {
   width: 100%;
   height: 100%;
-  background-color: #f1f5f9; /* slate-100 */
+  background-color: var(--bg-body);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -426,7 +421,7 @@ onBackPress(() => true);
 }
 
 .list-item:active {
-  background-color: #f8fafc; /* hover:bg-slate-50 */
+  background-color: var(--bg-body);
 }
 
 .list-left {
@@ -443,8 +438,8 @@ onBackPress(() => true);
   align-items: center;
   justify-content: center;
 }
-.bg-teal { background-color: #f0fdfa; /* teal-50 */ }
-.bg-cyan { background-color: #ecfeff; /* cyan-50 */ }
+.bg-teal { background-color: var(--bg-body); }
+.bg-cyan { background-color: var(--bg-body); }
 
 .list-text {
   font-weight: 600; /* font-semibold */
@@ -460,12 +455,12 @@ onBackPress(() => true);
 
 /* Notice Card */
 .notice-card {
-  background-color: rgba(59, 130, 246, 0.05); /* blue-50/50 approx */
-  border-radius: 48rpx; /* 3xl */
-  padding: 32rpx;
-  border: 1px solid rgba(59, 130, 246, 0.15); /* blue-100 approx */
+  background-color: var(--bg-body);
+  border-radius: 48rpx;
+  padding: 20rpx 32rpx;
+  border: 1px solid var(--border-card);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 24rpx;
   position: relative;
   overflow: hidden;
@@ -483,11 +478,10 @@ onBackPress(() => true);
 }
 
 .notice-icon-bg {
-  margin-top: 4rpx;
-  width: 64rpx;
-  height: 64rpx;
+  width: 56rpx;
+  height: 56rpx;
   border-radius: 50%;
-  background-color: rgba(59, 130, 246, 0.15); /* blue-100 */
+  background-color: var(--bg-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -517,15 +511,20 @@ onBackPress(() => true);
 
 .notice-badge {
   font-family: ui-monospace, monospace;
-  color: #2563eb; /* blue-600 */
-  background-color: rgba(219, 234, 254, 0.5); /* blue-100/50 */
+  color: var(--accent-color);
+  background-color: var(--bg-body);
   padding: 2rpx 8rpx;
   border-radius: 8rpx;
+}
+.notice-contact {
+  font-size: 22rpx;
+  color: var(--text-sub);
+  margin-top: 6rpx;
 }
 .notice-count {
   font-size: 22rpx;
   color: var(--text-sub);
-  margin-top: 10rpx;
+  margin-top: 6rpx;
 }
 
 /* Shared Interaction */

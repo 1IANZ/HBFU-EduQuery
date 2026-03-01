@@ -1,18 +1,19 @@
 <template>
   <view class="container">
+    <CustomNavBar title="第二课堂" :show-back="true" />
     <DektList
       class="list-container"
       :groups="groups"
       :refreshing="refreshing"
       :loading="loading"
       @refresh="onRefresh"
-      @toggle-group="toggleGroup"
-      @item-click="showDetail"
+      @toggleGroup="toggleGroup"
+      @itemClick="showDetail"
     />
 
     <DektDetailPopup
-      :visible="!!selectedItem"
-      :detail-data="detailData"
+      :visible="selectedItem !== null"
+      :detailData="detailData"
       :loading="detailLoading"
       @close="closeDetail"
     />

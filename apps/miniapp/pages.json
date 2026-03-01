@@ -11,13 +11,21 @@
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "河金小助手",
-        "enablePullDownRefresh": false
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "navigationBarTextStyle": "@navTextStyle",
+        "navigationBarBackgroundColor": "@navBgColor",
+        "backgroundColor": "@bgColor"
       }
     },
     {
       "path": "pages/profile/profile",
       "style": {
-        "navigationBarTitleText": "个人信息"
+        "navigationBarTitleText": "个人信息",
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "@navTextStyle",
+        "navigationBarBackgroundColor": "@navBgColor",
+        "backgroundColor": "@bgColor"
       }
     }
   ],
@@ -29,55 +37,82 @@
           "path": "course/course",
           "style": {
             "navigationBarTitleText": "课程安排",
-            "disableScroll": true
+            "navigationStyle": "custom",
+            "disableScroll": true,
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         },
         {
           "path": "score/score",
           "style": {
-            "navigationBarTitleText": "成绩查询"
+            "navigationBarTitleText": "成绩查询",
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         },
         {
           "path": "exam/exam",
           "style": {
-            "navigationBarTitleText": "考试安排"
+            "navigationBarTitleText": "考试安排",
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         },
         {
           "path": "elective/elective",
           "style": {
-            "navigationBarTitleText": "选课信息"
+            "navigationBarTitleText": "选课信息",
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         },
         {
           "path": "plan/plan",
           "style": {
-            "navigationBarTitleText": "执行计划"
+            "navigationBarTitleText": "执行计划",
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         },
         {
           "path": "dekt/dekt",
           "style": {
-            "navigationBarTitleText": "第二课堂"
+            "navigationBarTitleText": "第二课堂",
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "@navTextStyle",
+            "navigationBarBackgroundColor": "@navBgColor",
+            "backgroundColor": "@bgColor"
           }
         }
       ]
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "@navTextStyle",
     "navigationBarTitleText": "河金小助手",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "backgroundColor": "#F5F7FA",
-    "backgroundColorTop": "#F5F7FA",
-    "backgroundColorBottom": "#F5F7FA",
+    "navigationBarBackgroundColor": "@navBgColor",
+    "backgroundColor": "@bgColor",
+    "backgroundColorTop": "@bgColor",
+    "backgroundColorBottom": "@bgColor",
     "enablePullDownRefresh": false
   },
+  "darkmode": true,
+  "themeLocation": "theme.json",
   "easycom": {
     "autoscan": true,
     "custom": {
-      "^uni-(.*)": "@/uni_modules/uni-$1/components/uni-$1/uni-$1.vue"
+      "^uni-(.*)": "@/uni_modules/uni-$1/components/uni-$1/uni-$1.vue",
+      "^Custom(.*)": "@/components/Custom$1/Custom$1.vue"
     }
   },
   "uniIdRouter": {}

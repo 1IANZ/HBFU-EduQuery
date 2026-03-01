@@ -14,15 +14,16 @@
 
       <view class="inset-group-container" v-else-if="scores && scores.length > 0">
         <view
-          class="score-item active-scale"
+          class="score-card"
           v-for="item in scores"
           :key="item.id"
-          @click="$emit('item-click', item)"
         >
-          <view class="score-item-content">
-            <text class="course-name">{{ item.courseName }}</text>
-            <view class="score-badge" :class="getScoreClass(item.score)">
-              <text class="score-text">{{ item.score }}</text>
+          <view class="score-item active-scale" @click="$emit('itemClick', item)">
+            <view class="score-item-content">
+              <text class="course-name">{{ item.courseName }}</text>
+              <view class="score-badge" :class="getScoreClass(item.score)">
+                <text class="score-text">{{ item.score }}</text>
+              </view>
             </view>
           </view>
         </view>
@@ -57,7 +58,7 @@ defineProps({
   }
 });
 
-defineEmits(["refresh", "item-click"]);
+defineEmits(["refresh", "itemClick"]);
 </script>
 
 <style lang="scss" scoped>
@@ -79,20 +80,16 @@ $text-secondary: #64748b;
 
 /* Inset Group Container */
 .inset-group-container {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 36rpx;
-  box-shadow: 0 8rpx 24rpx rgba(148, 163, 184, 0.04);
+  box-shadow: var(--shadow-light);
   overflow: hidden;
   margin-bottom: 40rpx;
 }
 
 .score-item {
-  position: relative;
-  z-index: 10;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-card);
   transition: background 0.2s;
   
   &:last-child {
@@ -108,10 +105,9 @@ $text-secondary: #64748b;
 }
 
 .course-name {
-  flex: 1;
   font-size: 30rpx;
   font-weight: 600;
-  color: $text-primary;
+  color: var(--text-main);
   margin-right: 24rpx;
 }
 
@@ -169,7 +165,7 @@ $text-secondary: #64748b;
   }
 }
 .skeleton-pulse {
-  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background: linear-gradient(90deg, var(--bg-body) 25%, var(--bg-card) 50%, var(--bg-body) 75%);
   background-size: 400% 100%;
   animation: pulse 1.5s ease-in-out infinite;
   border-radius: 12rpx;

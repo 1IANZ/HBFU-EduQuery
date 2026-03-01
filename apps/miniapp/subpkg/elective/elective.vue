@@ -1,9 +1,10 @@
 <template>
   <view class="container">
+    <CustomNavBar title="选课信息" :show-back="true" />
     <ElectiveHeader
-      :semester-list="semesterList"
-      :current-semester="currentSemester"
-      @semester-change="onSemesterChange"
+      :semesterList="semesterList"
+      :currentSemester="currentSemester"
+      @semesterChange="onSemesterChange"
     />
 
     <ElectiveList
@@ -12,7 +13,7 @@
       :courses="electiveData.courses"
       :refreshing="refreshing"
       @refresh="onRefresh"
-      @item-click="showDetail"
+      @itemClick="showDetail"
     />
 
     <ElectiveCredits
