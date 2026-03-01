@@ -315,7 +315,7 @@ onBackPress(() => true);
 .icon-box-blue {
   width: 80rpx;
   height: 80rpx;
-  background-color: #eff6ff;
+  background-color: rgba(59, 130, 246, 0.15);
   border-radius: 32rpx; /* 2xl */
   display: flex;
   align-items: center;
@@ -326,7 +326,7 @@ onBackPress(() => true);
 .icon-box-emerald {
   width: 80rpx;
   height: 80rpx;
-  background-color: #ecfdf5; /* emerald-50 */
+  background-color: rgba(16, 185, 129, 0.15);
   border-radius: 32rpx;
   display: flex;
   align-items: center;

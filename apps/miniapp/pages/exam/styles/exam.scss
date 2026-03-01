@@ -30,7 +30,7 @@ $text-secondary: #64748b;
 .popup-card {
   width: 85%;
   max-height: 75vh;
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 32rpx;
   overflow: hidden;
   box-shadow: 0 20rpx 50rpx rgba(0, 0, 0, 0.15);
@@ -81,16 +81,16 @@ $text-secondary: #64748b;
 .detail-label {
   display: block;
   font-size: 24rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   margin-bottom: 8rpx;
 }
 
 .detail-value {
   display: block;
   font-size: 30rpx;
-  color: $text-primary;
+  color: var(--text-main);
   font-weight: 500;
-  background: #f8fafc;
+  background: var(--bg-body);
   padding: 16rpx 20rpx;
   border-radius: 16rpx;
 

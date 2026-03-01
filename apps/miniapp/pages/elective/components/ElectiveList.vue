@@ -19,9 +19,10 @@
           </view>
         </view>
 
-        <view v-if="!courses || courses.length === 0" class="empty-state">
-          <uni-icons type="info-filled" size="80" color="#cbd5e1" />
-          <text class="empty-text">暂无选课信息</text>
+        <view v-if="!courses || courses.length === 0" class="empty-state-card">
+          <view class="empty-emoji">🎯</view>
+          <text class="empty-title">还没有选课记录</text>
+          <text class="empty-subtitle">去发现你感兴趣的课程并加入清单吧</text>
         </view>
       </view>
     </scroll-view>
@@ -112,17 +113,5 @@ $text-secondary: #64748b;
   flex-shrink: 0;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 120rpx 0;
-  color: $text-secondary;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24rpx;
-}
 
-.empty-text {
-  font-size: 28rpx;
-}
 </style>

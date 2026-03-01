@@ -54,9 +54,10 @@
           </view>
         </view>
 
-        <view v-if="groups.length === 0 && !loading" class="empty-state">
-          <uni-icons type="info-filled" size="60" color="#cbd5e1" />
-          <text>暂无第二课堂记录</text>
+        <view v-if="groups.length === 0 && !loading" class="empty-state-card">
+          <view class="empty-emoji">🏆</view>
+          <text class="empty-title">还没有第二课堂记录</text>
+          <text class="empty-subtitle">参加校园志愿活动，丰富你的大学生活</text>
         </view>
       </view>
     </scroll-view>
@@ -227,13 +228,5 @@ $text-sub: #64748b;
   font-size: 24rpx;
 }
 
-.empty-state {
-  padding-top: 100rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20rpx;
-  color: $text-sub;
-  font-size: 28rpx;
-}
+
 </style>

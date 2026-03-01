@@ -63,13 +63,13 @@ $text-secondary: #64748b;
 }
 
 .course-card {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--bg-card-glass);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--border-glass);
   border-radius: 24rpx;
   margin-bottom: 16rpx;
   padding: 24rpx 28rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-light);
   position: relative;
   z-index: 1;
 }
@@ -84,24 +84,24 @@ $text-secondary: #64748b;
   flex: 1;
   font-size: 32rpx;
   font-weight: 600;
-  color: $text-primary;
+  color: var(--text-main);
   line-height: 1.4;
   padding-right: 16rpx;
 }
 
 .course-credits {
   padding: 6rpx 16rpx;
-  background: #f1f5f9;
+  background: var(--bg-body);
   border-radius: 8rpx;
   font-size: 22rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   flex-shrink: 0;
 }
 
 .empty-state {
   text-align: center;
   padding: 120rpx 0;
-  color: $text-secondary;
+  color: var(--text-sub);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,12 +130,12 @@ $text-secondary: #64748b;
 }
 
 .credit-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card);
   border-radius: 20rpx;
   margin-bottom: 16rpx;
   overflow: hidden;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-card);
 }
 
 .credit-card-header {
@@ -161,7 +161,7 @@ $text-secondary: #64748b;
   justify-content: space-between;
   align-items: center;
   padding: 12rpx 16rpx;
-  background: #f8fafc;
+  background: var(--bg-body);
   border-radius: 12rpx;
 
   &.total-item {
@@ -172,13 +172,13 @@ $text-secondary: #64748b;
 
 .credit-label {
   font-size: 26rpx;
-  color: $text-secondary;
+  color: var(--text-sub);
   font-weight: 500;
 }
 
 .credit-value {
   font-size: 28rpx;
-  color: $text-primary;
+  color: var(--text-main);
   font-weight: 600;
 
   &.total-value {

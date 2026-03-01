@@ -98,4 +98,38 @@ page {
   transform: scale(0.94);
   filter: brightness(0.95);
 }
+
+/* Emotional Empty States (Global) */
+.empty-state-card {
+  margin: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 40rpx;
+  background: var(--bg-card-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 48rpx;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-glass);
+  text-align: center;
+}
+.empty-emoji {
+  font-size: 120rpx;
+  line-height: 1.2;
+  margin-bottom: 30rpx;
+  filter: drop-shadow(0 20rpx 20rpx rgba(0,0,0,0.1));
+}
+.empty-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12rpx;
+}
+.empty-subtitle {
+  font-size: 26rpx;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
 </style>

@@ -36,9 +36,10 @@
         </view>
       </view>
 
-      <view v-if="!examList || examList.length === 0" class="empty-state">
-        <uni-icons type="info-filled" size="80" color="#cbd5e1" />
-        <text class="empty-text">暂无考试安排</text>
+      <view v-if="!examList || examList.length === 0" class="empty-state-card">
+        <view class="empty-emoji">🏖️</view>
+        <text class="empty-title">近期没有考试</text>
+        <text class="empty-subtitle">好好享受属于你的放松时光吧</text>
       </view>
     </scroll-view>
   </view>
@@ -177,18 +178,5 @@ $text-secondary: #64748b;
   flex: 1;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 120rpx 0;
-  color: $text-secondary;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24rpx;
-}
 
-.empty-text {
-  font-size: 28rpx;
-  color: $text-secondary;
-}
 </style>

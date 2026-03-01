@@ -28,9 +28,10 @@
         </view>
       </view>
 
-      <view class="empty-state" v-else-if="!loading && (!scores || scores.length === 0)">
-        <uni-icons type="info-filled" size="80" color="#cbd5e1" />
-        <text class="empty-text">暂无成绩数据</text>
+      <view class="empty-state-card" v-else-if="!loading && (!scores || scores.length === 0)">
+        <view class="empty-emoji">📝</view>
+        <text class="empty-title">查不到成绩记录</text>
+        <text class="empty-subtitle">去操场跑两圈放松一下再来看看吧</text>
       </view>
     </scroll-view>
   </view>
@@ -151,20 +152,7 @@ $text-secondary: #64748b;
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
-.empty-state {
-  text-align: center;
-  padding: 120rpx 0;
-  color: $text-secondary;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24rpx;
-}
 
-.empty-text {
-  font-size: 28rpx;
-  color: $text-secondary;
-}
 
 /* Skeleton Loading */
 .skeleton-container {
