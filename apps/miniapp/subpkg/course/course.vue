@@ -37,6 +37,7 @@ import CourseDetailPopup from "./components/CourseDetailPopup.vue";
 import { useWeek } from "./hooks/useWeek";
 import { useSemester } from "./hooks/useSemester";
 import { useCourseTable } from "./hooks/useCourseTable";
+import { getConfig } from "@/utils/configCache.js";
 
 const studentId = ref("");
 const showDetail = ref(false);
@@ -131,6 +132,11 @@ onLoad((options) => {
 
   if (options?.startDate) {
     initWeek(options.startDate);
+  } else {
+    getConfig((config) => {
+      const startDate = config?.data?.course?.startDate || config?.course?.startDate;
+      if (startDate) initWeek(startDate);
+    });
   }
 
   loadSemesters(defaultSemesterValue.value, () => {

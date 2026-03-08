@@ -7,7 +7,7 @@ export function useWeek() {
   const calcCurrentWeek = (startDateStr) => {
     if (!startDateStr) return 1;
     try {
-      const startDate = new Date(startDateStr);
+      const startDate = new Date(startDateStr.replace(/-/g, "/"));
       const now = new Date();
       const diffTime = now - startDate;
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
